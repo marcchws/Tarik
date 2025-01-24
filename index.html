@@ -9,284 +9,268 @@
     <link rel="stylesheet" href="/assets/css/layout.css">
     <link rel="stylesheet" href="/assets/css/components.css">
     <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .module-section {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .module-header {
+            border-bottom: 2px solid var(--color-gray-200);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+        }
+
+        .module-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: var(--color-gray-100);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            margin-left: var(--spacing-sm);
+            color: var(--color-gray-600);
+        }
+
+        .flow-container {
+            position: relative;
+            padding: var(--spacing-lg);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-lg);
+            background: white;
+        }
+
+        .flow-header {
+            position: absolute;
+            top: calc(-1 * var(--spacing-sm));
+            left: var(--spacing-md);
+            background: var(--color-gray-100);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+        }
+
+        .flow-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            color: var(--color-gray-700);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+        }
+
+        .page-link:hover {
+            border-color: var(--color-primary);
+            background: var(--color-gray-50);
+            transform: translateY(-1px);
+        }
+
+        .page-link::after {
+            content: '→';
+            margin-left: var(--spacing-sm);
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+
+        .page-link:hover::after {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        .flow-indicator {
+            display: flex;
+            align-items: center;
+            margin: var(--spacing-md) 0;
+            color: var(--color-gray-400);
+        }
+
+        .flow-indicator::before,
+        .flow-indicator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--color-gray-200);
+        }
+
+        .flow-indicator span {
+            padding: 0 var(--spacing-md);
+            font-size: 0.875rem;
+        }
+
+        .module-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-md);
+            font-size: 1.5rem;
+            margin-right: var(--spacing-md);
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin: var(--spacing-2xl) 0;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            color: white;
+            margin-bottom: var(--spacing-2xl);
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
-    <div class="page-container">
-        <div class="container">
-            <div class="text-center mb-8">
-                <h1 class="text-xl font-bold mb-2">Tarik</h1>
-                <p class="text-gray-500">Sistema de Gestão de Frotas</p>
-            </div>
-
-            <div class="grid grid-3 gap-6">
-                <!-- Dashboard -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="text-lg font-bold m-0">Dashboard</h2>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-none">
-                            <li class="mb-2">
-                                <a href="/pages/dashboard/index.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Dashboard Principal
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/dashboard/kpis.html" class="block p-2 rounded hover:bg-gray-50">
-                                    KPIs
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/dashboard/reports.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Relatórios
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/dashboard/schedule-report.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Agendar Relatório
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/dashboard/custom-report.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Relatório Customizado
-                                </a>
-                            </li>
-                        </ul>
+    <body class="bg-gray-100">
+        <div class="page-container">
+            <div class="container">
+                <!-- Welcome Banner -->
+                <div class="welcome-section">
+                    <div class="banner">
+                        <h1 class="text-3xl font-bold mb-4">Tarik - Gestão de Frotas</h1>
+                        <p class="text-lg opacity-90">Sistema completo para gestão e controle de frotas</p>
                     </div>
                 </div>
-
-                <!-- Operacional -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="text-lg font-bold m-0">Operacional</h2>
+     
+                <!-- Módulo Dashboard -->
+                <div class="module-section">
+                    <div class="module-header">
+                        <div class="flex items-center">
+                            <div class="module-icon">📊</div>
+                            <div>
+                                <h2 class="text-xl font-bold">Dashboard e Analytics</h2>
+                                <p class="text-gray-500">Visão geral e indicadores de performance</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <!-- Ordens de Serviço -->
-                        <h3 class="text-sm font-bold text-gray-500 mb-2">Ordens de Serviço</h3>
-                        <ul class="list-none mb-4">
-                            <li class="mb-2">
-                                <a href="/pages/operational/service-orders/list.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Listagem de OS
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/service-orders/form.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Nova/Editar OS
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/service-orders/view.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Visualizar OS
-                                </a>
-                            </li>
-                        </ul>
-
-                        <!-- Checklist -->
-                        <h3 class="text-sm font-bold text-gray-500 mb-2">Checklist</h3>
-                        <ul class="list-none mb-4">
-                            <li class="mb-2">
-                                <a href="/pages/operational/checklist/templates.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Templates
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/checklist/template-form.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Novo/Editar Template
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/checklist/fill.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Preencher Checklist
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/checklist/history.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Histórico
-                                </a>
-                            </li>
-                        </ul>
-
-                        <!-- Veículos -->
-                        <h3 class="text-sm font-bold text-gray-500 mb-2">Veículos</h3>
-                        <ul class="list-none mb-4">
-                            <li class="mb-2">
-                                <a href="/pages/operational/vehicles/list.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Listagem de Veículos
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/vehicles/form.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Novo/Editar Veículo
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/vehicles/view.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Detalhes do Veículo
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/vehicles/maintenance.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Manutenções
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/vehicles/maintenance-form.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Nova/Editar Manutenção
-                                </a>
-                            </li>
-                        </ul>
-
-                        <!-- Motoristas -->
-                        <h3 class="text-sm font-bold text-gray-500 mb-2">Motoristas</h3>
-                        <ul class="list-none">
-                            <li class="mb-2">
-                                <a href="/pages/operational/drivers/list.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Listagem de Motoristas
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/drivers/form.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Novo/Editar Motorista
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/operational/drivers/view.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Perfil do Motorista
-                                </a>
-                            </li>
-                        </ul>
+     
+                    <div class="flow-container">
+                        <div class="flow-header">Visualizações</div>
+                        <div class="flow-links">
+                            <a href="/pages/dashboard/index.html" class="page-link">Dashboard Principal</a>
+                            <a href="/pages/dashboard/kpis.html" class="page-link">KPIs</a>
+                        </div>
+                    </div>
+     
+                    <div class="flow-container">
+                        <div class="flow-header">Relatórios</div>
+                        <div class="flow-links">
+                            <a href="/pages/dashboard/reports.html" class="page-link">Relatórios</a>
+                            <a href="/pages/dashboard/schedule-report.html" class="page-link">Agendar Relatório</a>
+                            <a href="/pages/dashboard/custom-report.html" class="page-link">Relatório Customizado</a>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Configurações -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="text-lg font-bold m-0">Configurações</h2>
+     
+                <!-- Módulo Operacional -->
+                <div class="module-section">
+                    <div class="module-header">
+                        <div class="flex items-center">
+                            <div class="module-icon">🚛</div>
+                            <div>
+                                <h2 class="text-xl font-bold">Operacional</h2>
+                                <p class="text-gray-500">Gestão da operação diária</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <ul class="list-none">
-                            <li class="mb-2">
-                                <a href="/pages/settings/index.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Configurações Gerais
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/settings/users.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Usuários
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/settings/user-form.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Novo/Editar Usuário
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/settings/roles.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Papéis e Permissões
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/settings/role-form.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Novo/Editar Papel
-                                </a>
-                            </li>
-                        </ul>
+     
+                    <div class="flow-container">
+                        <div class="flow-header">Ordens de Serviço</div>
+                        <div class="flow-links">
+                            <a href="/pages/operational/service-orders/list.html" class="page-link">Listagem de OS</a>
+                            <a href="/pages/operational/service-orders/form.html" class="page-link">Nova/Editar OS</a>
+                            <a href="/pages/operational/service-orders/view.html" class="page-link">Visualizar OS</a>
+                        </div>
+     
+                        <div class="flow-indicator">
+                            <span>Integração com Checklist</span>
+                        </div>
+     
+                        <div class="flow-links">
+                            <a href="/pages/operational/checklist/templates.html" class="page-link">Templates</a>
+                            <a href="/pages/operational/checklist/template-form.html" class="page-link">Novo Template</a>
+                            <a href="/pages/operational/checklist/fill.html" class="page-link">Preencher Checklist</a>
+                            <a href="/pages/operational/checklist/history.html" class="page-link">Histórico</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Documentos -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="text-lg font-bold m-0">Documentos</h2>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-none">
-                            <li class="mb-2">
-                                <a href="/pages/control/documents/list.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Listagem de Documentos
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/control/documents/form.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Forumulário do Documento
-                                </a>
-                            </li>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/control/documents/view.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Visualização Detalhada
-                                </a>
-                            </li>
-                        </ul>
+     
+                    <div class="flow-container">
+                        <div class="flow-header">Gestão de Frotas</div>
+                        <div class="flow-links">
+                            <a href="/pages/operational/vehicles/list.html" class="page-link">Listagem de Veículos</a>
+                            <a href="/pages/operational/vehicles/form.html" class="page-link">Novo/Editar Veículo</a>
+                            <a href="/pages/operational/vehicles/view.html" class="page-link">Detalhes do Veículo</a>
+                            <a href="/pages/operational/vehicles/maintenance.html" class="page-link">Manutenções</a>
+                            <a href="/pages/operational/vehicles/maintenance-form.html" class="page-link">Nova Manutenção</a>
+                        </div>
+     
+                        <div class="flow-indicator">
+                            <span>Gestão de Motoristas</span>
+                        </div>
+     
+                        <div class="flow-links">
+                            <a href="/pages/operational/drivers/list.html" class="page-link">Listagem de Motoristas</a>
+                            <a href="/pages/operational/drivers/form.html" class="page-link">Novo/Editar Motorista</a>
+                            <a href="/pages/operational/drivers/view.html" class="page-link">Perfil do Motorista</a>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Financeiro -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="text-lg font-bold m-0">Financeiro</h2>
+     
+                <!-- Módulo Controle e Monitoramento -->
+                <div class="module-section">
+                    <div class="module-header">
+                        <div class="flex items-center">
+                            <div class="module-icon">🔍</div>
+                            <div>
+                                <h2 class="text-xl font-bold">Controle e Monitoramento</h2>
+                                <p class="text-gray-500">Acompanhamento e gestão em tempo real</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <ul class="list-none">
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/control/financial/index.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Financeiro
-                                </a>
-                            </li>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/control/financial/expense-form.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Formulário de Despesa
-                                </a>
-                            </li>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/control/financial/vehicle-expenses.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Detalhe de Despesa
-                                </a>
-                            </li>
-                        </ul>
+     
+                    <div class="flow-container">
+                        <div class="flow-header">Documentos</div>
+                        <div class="flow-links">
+                            <a href="/pages/control/documents/list.html" class="page-link">Listagem de Documentos</a>
+                            <a href="/pages/control/documents/form.html" class="page-link">Novo Documento</a>
+                            <a href="/pages/control/documents/view.html" class="page-link">Visualizar Documento</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Rastreamento -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="text-lg font-bold m-0">Rastreamento</h2>
+     
+                    <div class="flow-container">
+                        <div class="flow-header">Financeiro</div>
+                        <div class="flow-links">
+                            <a href="/pages/control/financial/index.html" class="page-link">Dashboard Financeiro</a>
+                            <a href="/pages/control/financial/expense-form.html" class="page-link">Nova Despesa</a>
+                            <a href="/pages/control/financial/vehicle-expenses.html" class="page-link">Despesas por Veículo</a>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <ul class="list-none">
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/control/tracking/index.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Rastreamento
-                                </a>
-                            </li>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/pages/control/tracking/geofences.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Cercas Virtuais de Segurança
-                                </a>
-                            </li>
-                             </li>
-                            <li class="mb-2">
-                                <a href="/pages/control/tracking/routes.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Histórico de Rotas
-                                </a>
-                            </li>
-                            </li>
-                             </li>
-                            <li class="mb-2">
-                                <a href="/pages/control/tracking/alerts.html" class="block p-2 rounded hover:bg-gray-50">
-                                    Alertas e Notificações
-                                </a>
-                            </li>
-                        </ul>
+     
+                    <div class="flow-container">
+                        <div class="flow-header">Rastreamento</div>
+                        <div class="flow-links">
+                            <a href="/pages/control/tracking/index.html" class="page-link">Monitoramento em Tempo Real</a>
+                            <a href="/pages/control/tracking/geofences.html" class="page-link">Cercas Virtuais</a>
+                            <a href="/pages/control/tracking/routes.html" class="page-link">Histórico de Rotas</a>
+                            <a href="/pages/control/tracking/alerts.html" class="page-link">Alertas</a>
+                            <a href="/pages/control/tracking/alert-rules.html" class="page-link">Regras de Alerta</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
-</html>
+     </body>
+     </html>

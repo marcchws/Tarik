@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurar Regra de Alerta - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .condition-card {
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .notification-method {
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .notification-method:hover {
+            background: var(--color-gray-50);
+        }
+
+        .notification-method.selected {
+            border-color: var(--color-primary);
+            background: var(--color-gray-50);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: var(--spacing-xs);
+        }
+
+        .day-button {
+            padding: var(--spacing-xs);
+            text-align: center;
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+        }
+
+        .day-button.selected {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .operator-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: var(--color-gray-100);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            margin-right: var(--spacing-xs);
+            cursor: pointer;
+        }
+
+        .operator-badge.selected {
+            background: var(--color-primary);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Nova Regra de Alerta</h1>
+                    <p class="text-gray-500">Configure condições e notificações</p>
+                </div>
+                <div>
+                    <button class="btn btn-outline mr-2">Cancelar</button>
+                    <button class="btn btn-primary">Salvar Regra</button>
+                </div>
+            </div>
+
+            <div class="grid grid-2 gap-6">
+                <!-- Configurações Básicas -->
+                <div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Informações Básicas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Nome da Regra</label>
+                                <input type="text" class="form-input" placeholder="Ex: Excesso de Velocidade">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Descrição</label>
+                                <textarea class="form-input" rows="2" placeholder="Descreva o propósito desta regra..."></textarea>
+                            </div>
+
+                            <div class="grid grid-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">Severidade</label>
+                                    <select class="form-input">
+                                        <option>Crítico</option>
+                                        <option>Alerta</option>
+                                        <option>Informação</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Status</label>
+                                    <select class="form-input">
+                                        <option>Ativo</option>
+                                        <option>Inativo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Condições -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Condições</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Tipo de Condição -->
+                            <div class="form-group">
+                                <label class="form-label">Tipo</label>
+                                <select class="form-input">
+                                    <option>Velocidade</option>
+                                    <option>Parada</option>
+                                    <option>Cerca Virtual</option>
+                                    <option>Jornada</option>
+                                    <option>Temperatura</option>
+                                </select>
+                            </div>
+
+                            <!-- Operadores -->
+                            <div class="mb-4">
+                                <label class="form-label">Operador</label>
+                                <div>
+                                    <span class="operator-badge selected">> Maior que</span>
+                                    <span class="operator-badge">< Menor que</span>
+                                    <span class="operator-badge">= Igual a</span>
+                                    <span class="operator-badge">≠ Diferente de</span>
+                                </div>
+                            </div>
+
+                            <!-- Valor -->
+                            <div class="form-group">
+                                <label class="form-label">Valor</label>
+                                <input type="number" class="form-input" placeholder="80">
+                                <div class="text-sm text-gray-500 mt-1">km/h</div>
+                            </div>
+
+                            <!-- Duração -->
+                            <div class="form-group">
+                                <label class="form-label">Duração Mínima</label>
+                                <div class="grid grid-2 gap-4">
+                                    <input type="number" class="form-input" placeholder="5">
+                                    <select class="form-input">
+                                        <option>Segundos</option>
+                                        <option>Minutos</option>
+                                        <option>Horas</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-outline w-full mt-4">
+                                + Adicionar Condição
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notificações e Agendamento -->
+                <div>
+                    <!-- Notificações -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Notificações</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="grid grid-2 gap-4 mb-4">
+                                <div class="notification-method selected">
+                                    <div class="flex items-center gap-3">
+                                        <div style="font-size: 1.5rem;">📧</div>
+                                        <div>
+                                            <div class="font-medium">Email</div>
+                                            <div class="text-sm text-gray-500">Notificação por email</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="notification-method">
+                                    <div class="flex items-center gap-3">
+                                        <div style="font-size: 1.5rem;">📱</div>
+                                        <div>
+                                            <div class="font-medium">SMS</div>
+                                            <div class="text-sm text-gray-500">Mensagem de texto</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="notification-method">
+                                    <div class="flex items-center gap-3">
+                                        <div style="font-size: 1.5rem;">🔔</div>
+                                        <div>
+                                            <div class="font-medium">Push</div>
+                                            <div class="text-sm text-gray-500">Notificação no app</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="notification-method">
+                                    <div class="flex items-center gap-3">
+                                        <div style="font-size: 1.5rem;">🔗</div>
+                                        <div>
+                                            <div class="font-medium">Webhook</div>
+                                            <div class="text-sm text-gray-500">Integração via API</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Destinatários -->
+                            <div class="form-group">
+                                <label class="form-label">Destinatários</label>
+                                <select class="form-input" multiple>
+                                    <option>Administradores</option>
+                                    <option>Gerentes</option>
+                                    <option>Supervisores</option>
+                                    <option>Motorista Responsável</option>
+                                </select>
+                            </div>
+
+                            <!-- Emails Adicionais -->
+                            <div class="form-group">
+                                <label class="form-label">Emails Adicionais</label>
+                                <textarea class="form-input" rows="2" placeholder="Um email por linha..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agendamento -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Agendamento</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Dias da Semana -->
+                            <div class="form-group">
+                                <label class="form-label">Dias da Semana</label>
+                                <div class="schedule-grid">
+                                    <div class="day-button selected">D</div>
+                                    <div class="day-button selected">S</div>
+                                    <div class="day-button selected">T</div>
+                                    <div class="day-button selected">Q</div>
+                                    <div class="day-button selected">Q</div>
+                                    <div class="day-button selected">S</div>
+                                    <div class="day-button selected">S</div>
+                                </div>
+                            </div>
+
+                            <!-- Horário -->
+                            <div class="grid grid-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">Horário Início</label>
+                                    <input type="time" class="form-input" value="00:00">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Horário Fim</label>
+                                    <input type="time" class="form-input" value="23:59">
+                                </div>
+                            </div>
+
+                            <!-- Período de Silêncio -->
+                            <div class="form-group">
+                                <label class="form-label">Período de Silêncio</label>
+                                <select class="form-input">
+                                    <option>Nenhum</option>
+                                    <option>5 minutos</option>
+                                    <option>15 minutos</option>
+                                    <option>30 minutos</option>
+                                    <option>1 hora</option>
+                                </select>
+                                <div class="text-sm text-gray-500 mt-1">
+                                    Tempo mínimo entre notificações do mesmo tipo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handler para métodos de notificação
+        document.querySelectorAll('.notification-method').forEach(method => {
+            method.addEventListener('click', () => {
+                method.classList.toggle('selected');
+            });
+        });
+
+        // Handler para dias da semana
+        document.querySelectorAll('.day-button').forEach(day => {
+            day.addEventListener('click', () => {
+                day.classList.toggle('selected');
+            });
+        });
+
+        // Handler para operadores
+        document.querySelectorAll('.operator-badge').forEach(op => {
+            op.addEventListener('click', () => {
+                document.querySelectorAll('.operator-badge').forEach(b => {
+                    b.classList.remove('selected');
+                });
+                op.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
