@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alertas - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .alert-item {
+            border-left: 4px solid transparent;
+        }
+
+        .alert-critical {
+            border-color: var(--color-error);
+        }
+
+        .alert-warning {
+            border-color: var(--color-warning);
+        }
+
+        .alert-info {
+            border-color: var(--color-info);
+        }
+
+        .alert-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: var(--spacing-md);
+        }
+
+        .filter-section {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .rule-card {
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .condition-row {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+
+        .condition-row:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Alertas e Notificações</h1>
+                    <p class="text-gray-500">Monitoramento e configuração de alertas</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary">Nova Regra</button>
+                </div>
+            </div>
+
+            <div class="grid grid-3 gap-6">
+                <!-- Lista de Alertas -->
+                <div class="col-span-2">
+                    <!-- Filtros -->
+                    <div class="filter-section">
+                        <div class="grid grid-4 gap-4">
+                            <div class="form-group mb-0">
+                                <select class="form-input">
+                                    <option>Todos os veículos</option>
+                                    <option>Ford Cargo 2429</option>
+                                    <option>VW Constellation</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-0">
+                                <select class="form-input">
+                                    <option>Todos os tipos</option>
+                                    <option>Velocidade</option>
+                                    <option>Paradas</option>
+                                    <option>Cerca Virtual</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-0">
+                                <select class="form-input">
+                                    <option>Todas as severidades</option>
+                                    <option>Crítico</option>
+                                    <option>Alerta</option>
+                                    <option>Informação</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-0">
+                                <select class="form-input">
+                                    <option>Últimas 24 horas</option>
+                                    <option>Última semana</option>
+                                    <option>Último mês</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lista de Alertas -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-bold m-0">Alertas Recentes</h3>
+                                <div class="flex gap-2">
+                                    <div class="badge badge-error">2 Críticos</div>
+                                    <div class="badge badge-warning">5 Alertas</div>
+                                    <div class="badge badge-info">12 Info</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="alert-item alert-critical p-4 border-b border-gray-200">
+                                <div class="flex">
+                                    <div class="alert-icon bg-red-100 text-red-600">⚠️</div>
+                                    <div class="flex-1">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <div class="font-medium">Excesso de Velocidade</div>
+                                                <div class="text-sm text-gray-500">ABC-1234 • Ford Cargo 2429</div>
+                                                <div class="text-sm text-gray-500">95 km/h em zona de 60 km/h</div>
+                                            </div>
+                                            <div class="text-sm text-gray-500">5 min atrás</div>
+                                        </div>
+                                        <div class="flex gap-2 mt-2">
+                                            <button class="btn btn-outline btn-sm">Ver no Mapa</button>
+                                            <button class="btn btn-outline btn-sm">Detalhes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert-item alert-warning p-4 border-b border-gray-200">
+                                <div class="flex">
+                                    <div class="alert-icon bg-yellow-100 text-yellow-600">⏱️</div>
+                                    <div class="flex-1">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <div class="font-medium">Parada Não Programada</div>
+                                                <div class="text-sm text-gray-500">DEF-5678 • VW Constellation</div>
+                                                <div class="text-sm text-gray-500">Parado há 15 minutos</div>
+                                            </div>
+                                            <div class="text-sm text-gray-500">15 min atrás</div>
+                                        </div>
+                                        <div class="flex gap-2 mt-2">
+                                            <button class="btn btn-outline btn-sm">Ver no Mapa</button>
+                                            <button class="btn btn-outline btn-sm">Detalhes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert-item alert-info p-4">
+                                <div class="flex">
+                                    <div class="alert-icon bg-blue-100 text-blue-600">🌍</div>
+                                    <div class="flex-1">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <div class="font-medium">Entrada em Zona de Entrega</div>
+                                                <div class="text-sm text-gray-500">ABC-1234 • Ford Cargo 2429</div>
+                                                <div class="text-sm text-gray-500">Zona A - Cliente Principal</div>
+                                            </div>
+                                            <div class="text-sm text-gray-500">30 min atrás</div>
+                                        </div>
+                                        <div class="flex gap-2 mt-2">
+                                            <button class="btn btn-outline btn-sm">Ver no Mapa</button>
+                                            <button class="btn btn-outline btn-sm">Detalhes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regras de Alerta -->
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Regras de Alerta</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Regra 1 -->
+                            <div class="rule-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <div class="font-medium">Excesso de Velocidade</div>
+                                        <div class="text-sm text-gray-500">Crítico</div>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="condition-row">
+                                    <div class="text-sm text-gray-500">Condição:</div>
+                                    <div class="text-sm">Velocidade > 80 km/h</div>
+                                </div>
+                                <div class="condition-row">
+                                    <div class="text-sm text-gray-500">Notificar:</div>
+                                    <div class="text-sm">Email, SMS</div>
+                                </div>
+                            </div>
+
+                            <!-- Regra 2 -->
+                            <div class="rule-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <div class="font-medium">Parada Prolongada</div>
+                                        <div class="text-sm text-gray-500">Alerta</div>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="condition-row">
+                                    <div class="text-sm text-gray-500">Condição:</div>
+                                    <div class="text-sm">Parado > 15 minutos</div>
+                                </div>
+                                <div class="condition-row">
+                                    <div class="text-sm text-gray-500">Notificar:</div>
+                                    <div class="text-sm">Email</div>
+                                </div>
+                            </div>
+
+                            <!-- Regra 3 -->
+                            <div class="rule-card">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <div class="font-medium">Cerca Virtual</div>
+                                        <div class="text-sm text-gray-500">Informativo</div>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="condition-row">
+                                    <div class="text-sm text-gray-500">Condição:</div>
+                                    <div class="text-sm">Entrada/Saída de Zona</div>
+                                </div>
+                                <div class="condition-row">
+                                    <div class="text-sm text-gray-500">Notificar:</div>
+                                    <div class="text-sm">Email, Webhook</div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-outline w-full mt-4">
+                                Ver Todas as Regras
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

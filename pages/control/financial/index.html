@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .metric-card {
+            height: 100%;
+        }
+
+        .metric-trend-up {
+            color: var(--color-success);
+        }
+
+        .metric-trend-down {
+            color: var(--color-error);
+        }
+
+        .chart-container {
+            height: 300px;
+            background: var(--color-gray-50);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .expense-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .expense-item:last-child {
+            border-bottom: none;
+        }
+
+        .expense-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-md);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Financeiro</h1>
+                    <p class="text-gray-500">Gestão financeira da frota</p>
+                </div>
+                <div class="flex gap-3">
+                    <select class="form-input">
+                        <option>Janeiro 2025</option>
+                        <option>Dezembro 2024</option>
+                        <option>Novembro 2024</option>
+                    </select>
+                    <button class="btn btn-primary">Nova Despesa</button>
+                </div>
+            </div>
+
+            <!-- Métricas -->
+            <div class="grid grid-4 gap-4 mb-6">
+                <div class="card metric-card">
+                    <div class="card-body">
+                        <div class="text-sm text-gray-500">Despesas Totais</div>
+                        <div class="text-2xl font-bold mb-1">R$ 45.250,00</div>
+                        <div class="text-sm metric-trend-up">↑ 8% vs. mês anterior</div>
+                    </div>
+                </div>
+
+                <div class="card metric-card">
+                    <div class="card-body">
+                        <div class="text-sm text-gray-500">Custo por Km</div>
+                        <div class="text-2xl font-bold mb-1">R$ 2,45</div>
+                        <div class="text-sm metric-trend-down">↓ 5% vs. mês anterior</div>
+                    </div>
+                </div>
+
+                <div class="card metric-card">
+                    <div class="card-body">
+                        <div class="text-sm text-gray-500">Custo por Veículo</div>
+                        <div class="text-2xl font-bold mb-1">R$ 3.750,00</div>
+                        <div class="text-sm metric-trend-up">↑ 3% vs. mês anterior</div>
+                    </div>
+                </div>
+
+                <div class="card metric-card">
+                    <div class="card-body">
+                        <div class="text-sm text-gray-500">Combustível</div>
+                        <div class="text-2xl font-bold mb-1">R$ 28.500,00</div>
+                        <div class="text-sm metric-trend-up">↑ 12% vs. mês anterior</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráficos e Despesas -->
+            <div class="grid grid-2 gap-6">
+                <!-- Gráfico Principal -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-bold m-0">Despesas por Categoria</h3>
+                            <select class="form-input">
+                                <option>Últimos 12 meses</option>
+                                <option>Último trimestre</option>
+                                <option>Este mês</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            Área do Gráfico
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Últimas Despesas -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-bold m-0">Últimas Despesas</h3>
+                            <button class="btn btn-outline btn-sm">Ver todas</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="expense-item">
+                            <div class="expense-icon">⛽</div>
+                            <div class="flex-1">
+                                <div class="font-medium">Abastecimento</div>
+                                <div class="text-sm text-gray-500">ABC-1234 • Ford Cargo</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">R$ 850,00</div>
+                                <div class="text-sm text-gray-500">24/01/2025</div>
+                            </div>
+                        </div>
+
+                        <div class="expense-item">
+                            <div class="expense-icon">🔧</div>
+                            <div class="flex-1">
+                                <div class="font-medium">Manutenção Preventiva</div>
+                                <div class="text-sm text-gray-500">DEF-5678 • VW Const.</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">R$ 1.250,00</div>
+                                <div class="text-sm text-gray-500">23/01/2025</div>
+                            </div>
+                        </div>
+
+                        <div class="expense-item">
+                            <div class="expense-icon">🛂</div>
+                            <div class="flex-1">
+                                <div class="font-medium">Licenciamento</div>
+                                <div class="text-sm text-gray-500">GHI-9012 • Scania</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">R$ 950,00</div>
+                                <div class="text-sm text-gray-500">22/01/2025</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros e Tabela -->
+            <div class="card mt-6">
+                <div class="card-header">
+                    <h3 class="text-lg font-bold m-0">Resumo Financeiro por Veículo</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Veículo</th>
+                                <th>Combustível</th>
+                                <th>Manutenção</th>
+                                <th>Documentação</th>
+                                <th>Outros</th>
+                                <th>Total</th>
+                                <th>Custo/Km</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ford Cargo 2429 (ABC-1234)</td>
+                                <td>R$ 4.250,00</td>
+                                <td>R$ 1.800,00</td>
+                                <td>R$ 950,00</td>
+                                <td>R$ 350,00</td>
+                                <td class="font-medium">R$ 7.350,00</td>
+                                <td>R$ 2,45</td>
+                            </tr>
+                            <tr>
+                                <td>VW Constellation (DEF-5678)</td>
+                                <td>R$ 3.850,00</td>
+                                <td>R$ 2.200,00</td>
+                                <td>R$ 950,00</td>
+                                <td>R$ 280,00</td>
+                                <td class="font-medium">R$ 7.280,00</td>
+                                <td>R$ 2,35</td>
+                            </tr>
+                            <tr>
+                                <td>Scania R450 (GHI-9012)</td>
+                                <td>R$ 5.150,00</td>
+                                <td>R$ 1.500,00</td>
+                                <td>R$ 950,00</td>
+                                <td>R$ 420,00</td>
+                                <td class="font-medium">R$ 8.020,00</td>
+                                <td>R$ 2,65</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Documento - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .document-preview {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-item {
+            padding: 1rem 0;
+            border-left: 2px solid var(--color-gray-200);
+            margin-left: 1rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 1.5rem;
+        }
+
+        .reminder-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            background: var(--color-gray-100);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .version-selector {
+            border-bottom: 1px solid var(--color-gray-200);
+            padding-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">CRLV ABC-1234</h1>
+                    <p class="text-gray-500">Licenciamento 2025 • Ford Cargo 2429</p>
+                </div>
+                <div>
+                    <button class="btn btn-outline mr-2">Baixar PDF</button>
+                    <button class="btn btn-primary">Editar</button>
+                </div>
+            </div>
+
+            <div class="grid grid-3 gap-6">
+                <!-- Status e Informações -->
+                <div class="col-span-2">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="grid grid-3 gap-4">
+                                <div>
+                                    <div class="text-sm text-gray-500">Status</div>
+                                    <div class="font-medium">
+                                        <span class="badge badge-success">Em dia</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500">Data de Emissão</div>
+                                    <div class="font-medium">01/01/2025</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500">Data de Vencimento</div>
+                                    <div class="font-medium">31/12/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visualizador do Documento -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-bold m-0">Documento</h3>
+                                <div class="flex gap-2">
+                                    <button class="btn btn-outline btn-sm">🔍 Zoom</button>
+                                    <button class="btn btn-outline btn-sm">↻ Girar</button>
+                                    <button class="btn btn-outline btn-sm">⤓ Download</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="version-selector p-4">
+                                <select class="form-input">
+                                    <option>Versão atual - 24/01/2025</option>
+                                    <option>Versão anterior - 23/01/2025</option>
+                                </select>
+                            </div>
+                            <div class="document-preview">
+                                Área de visualização do documento
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div>
+                    <!-- Detalhes -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Detalhes</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <div class="text-sm text-gray-500 mb-1">Categoria</div>
+                                <div class="font-medium">Veículos</div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="text-sm text-gray-500 mb-1">Referência</div>
+                                <div class="font-medium">Ford Cargo 2429</div>
+                                <div class="text-sm text-gray-500">ABC-1234</div>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500 mb-1">Observações</div>
+                                <div class="text-sm">Documento original digitalizado em 24/01/2025</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lembretes -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Lembretes</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="reminder-badge">
+                                ⏰ Primeiro lembrete: 30 dias antes
+                            </div>
+                            <div class="reminder-badge">
+                                📅 Frequência: Semanalmente
+                            </div>
+                            <div class="reminder-badge">
+                                👥 Destinatários: Administradores, Gerentes
+                            </div>
+                            <button class="btn btn-outline w-full mt-4">
+                                Configurar Lembretes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Histórico -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Histórico</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="timeline-item">
+                                <div class="font-medium">Documento visualizado</div>
+                                <div class="text-sm text-gray-500">24/01/2025 15:30</div>
+                                <div class="text-sm">por João Silva</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="font-medium">Nova versão enviada</div>
+                                <div class="text-sm text-gray-500">24/01/2025 10:15</div>
+                                <div class="text-sm">por Maria Santos</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="font-medium">Lembrete enviado</div>
+                                <div class="text-sm text-gray-500">23/01/2025 08:00</div>
+                                <div class="text-sm">Sistema automático</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

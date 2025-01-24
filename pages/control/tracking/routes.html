@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Rotas - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .map-container {
+            height: 600px;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-md);
+            position: relative;
+        }
+
+        .route-info {
+            width: 300px;
+            max-height: 500px;
+            overflow-y: auto;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .data-point {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--color-gray-200);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .data-point:hover {
+            background: var(--color-gray-50);
+        }
+
+        .data-point:last-child {
+            border-bottom: none;
+        }
+
+        .route-stats {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-sm);
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) 0;
+            border-left: 2px solid var(--color-gray-200);
+            margin-left: 1rem;
+            padding-left: var(--spacing-md);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 1.5rem;
+        }
+
+        .event-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+            background: var(--color-gray-100);
+        }
+
+        .filter-section {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Histórico de Rotas</h1>
+                    <p class="text-gray-500">Análise de trajetos e eventos</p>
+                </div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filter-section">
+                <div class="grid grid-4 gap-4">
+                    <div class="form-group mb-0">
+                        <select class="form-input">
+                            <option>Ford Cargo 2429 (ABC-1234)</option>
+                            <option>VW Constellation (DEF-5678)</option>
+                            <option>Scania R450 (GHI-9012)</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-0">
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group mb-0">
+                        <select class="form-input">
+                            <option>Todas as rotas</option>
+                            <option>OS #156</option>
+                            <option>OS #157</option>
+                            <option>OS #158</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+
+            <!-- Mapa e Detalhes -->
+            <div class="grid grid-3 gap-6">
+                <!-- Histórico de Eventos -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-lg font-bold m-0">Eventos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="timeline-item">
+                            <div class="event-icon">🚀</div>
+                            <div>
+                                <div class="font-medium">Início da Rota</div>
+                                <div class="text-sm text-gray-500">08:00 - Base Principal</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="event-icon">⚠️</div>
+                            <div>
+                                <div class="font-medium">Excesso de Velocidade</div>
+                                <div class="text-sm text-gray-500">08:30 - Av. Principal</div>
+                                <div class="text-sm text-gray-500">95 km/h em zona de 60 km/h</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="event-icon">⏸️</div>
+                            <div>
+                                <div class="font-medium">Parada</div>
+                                <div class="text-sm text-gray-500">09:15 - Cliente A</div>
+                                <div class="text-sm text-gray-500">Duração: 25 minutos</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="event-icon">✅</div>
+                            <div>
+                                <div class="font-medium">Fim da Rota</div>
+                                <div class="text-sm text-gray-500">10:30 - Base Principal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapa -->
+                <div class="col-span-2">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="map-container">
+                                <!-- Estatísticas da Rota -->
+                                <div class="route-stats">
+                                    <div class="grid grid-3 gap-4">
+                                        <div class="text-center">
+                                            <div class="text-sm text-gray-500">Distância</div>
+                                            <div class="font-medium">45 km</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-sm text-gray-500">Duração</div>
+                                            <div class="font-medium">2h 30min</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-sm text-gray-500">Vel. Média</div>
+                                            <div class="font-medium">60 km/h</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Timeline de Eventos -->
+                                <div style="position: absolute; bottom: var(--spacing-md); right: var(--spacing-md);">
+                                    <input type="range" min="0" max="100" value="50" style="width: 300px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Métricas Detalhadas -->
+                    <div class="grid grid-3 gap-4 mt-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-sm text-gray-500">Tempo em Movimento</div>
+                                <div class="text-xl font-bold">1h 45min</div>
+                                <div class="text-sm text-gray-500">70% do tempo total</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-sm text-gray-500">Paradas</div>
+                                <div class="text-xl font-bold">4</div>
+                                <div class="text-sm text-gray-500">45min total</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-sm text-gray-500">Consumo</div>
+                                <div class="text-xl font-bold">3.2 km/l</div>
+                                <div class="text-sm text-gray-500">14L/100km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

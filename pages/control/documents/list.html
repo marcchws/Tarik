@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .document-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: var(--color-gray-100);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            margin-right: var(--spacing-xs);
+        }
+
+        .expiration-warning {
+            background: #fef3c7;
+            color: #92400e;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .expiration-expired {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .expiration-ok {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .filter-group {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Documentos</h1>
+                    <p class="text-gray-500">Gestão de documentos e vencimentos</p>
+                </div>
+                <button class="btn btn-primary">Novo Documento</button>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filter-group">
+                <div class="grid grid-4 gap-4">
+                    <div class="form-group mb-0">
+                        <input type="text" class="form-input" placeholder="Buscar documentos...">
+                    </div>
+                    <div class="form-group mb-0">
+                        <select class="form-input">
+                            <option>Todas as categorias</option>
+                            <option>Veículos</option>
+                            <option>Motoristas</option>
+                            <option>Empresa</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-0">
+                        <select class="form-input">
+                            <option>Todos os status</option>
+                            <option>Em dia</option>
+                            <option>Próximo ao vencimento</option>
+                            <option>Vencido</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-0">
+                        <select class="form-input">
+                            <option>Ordenar por</option>
+                            <option>Data de vencimento</option>
+                            <option>Nome</option>
+                            <option>Categoria</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de Documentos -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-lg font-bold m-0">Documentos</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Documento</th>
+                                <th>Categoria</th>
+                                <th>Referência</th>
+                                <th>Vencimento</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">CRLV ABC-1234</div>
+                                        <div class="text-sm text-gray-500">Licenciamento 2025</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="document-tag">Veículos</div>
+                                </td>
+                                <td>Ford Cargo 2429</td>
+                                <td>31/12/2025</td>
+                                <td>
+                                    <span class="expiration-ok">
+                                        ✓ Em dia
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm">Visualizar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">CNH João Silva</div>
+                                        <div class="text-sm text-gray-500">Categoria E</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="document-tag">Motoristas</div>
+                                </td>
+                                <td>João Silva</td>
+                                <td>15/02/2025</td>
+                                <td>
+                                    <span class="expiration-warning">
+                                        ⚠️ Vence em 20 dias
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm">Visualizar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">IPVA DEF-5678</div>
+                                        <div class="text-sm text-gray-500">Exercício 2025</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="document-tag">Veículos</div>
+                                </td>
+                                <td>VW Constellation</td>
+                                <td>15/01/2025</td>
+                                <td>
+                                    <span class="expiration-expired">
+                                        ❌ Vencido há 9 dias
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm">Visualizar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Paginação -->
+            <div class="flex justify-between items-center mt-4">
+                <div class="text-sm text-gray-500">
+                    Mostrando 1-3 de 28 documentos
+                </div>
+                <div class="flex gap-2">
+                    <button class="btn btn-outline">Anterior</button>
+                    <button class="btn btn-primary">1</button>
+                    <button class="btn btn-outline">2</button>
+                    <button class="btn btn-outline">3</button>
+                    <button class="btn btn-outline">Próximo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

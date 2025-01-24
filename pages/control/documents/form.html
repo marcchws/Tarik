@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Documento - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .upload-area {
+            border: 2px dashed var(--color-gray-300);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .upload-area:hover {
+            border-color: var(--color-primary);
+            background: var(--color-gray-50);
+        }
+
+        .file-preview {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .file-info:last-child {
+            border-bottom: none;
+        }
+
+        .reminder-settings {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Novo Documento</h1>
+                    <p class="text-gray-500">Upload e cadastro de documento</p>
+                </div>
+                <div>
+                    <button class="btn btn-outline mr-2">Cancelar</button>
+                    <button class="btn btn-primary">Salvar Documento</button>
+                </div>
+            </div>
+
+            <div class="grid grid-2 gap-6">
+                <!-- Informações do Documento -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-lg font-bold m-0">Informações do Documento</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Nome do Documento</label>
+                            <input type="text" class="form-input" placeholder="Ex: CRLV 2025">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Categoria</label>
+                            <select class="form-input">
+                                <option>Selecione uma categoria</option>
+                                <option>Veículos</option>
+                                <option>Motoristas</option>
+                                <option>Empresa</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Referência</label>
+                            <select class="form-input">
+                                <option>Selecione a referência</option>
+                                <optgroup label="Veículos">
+                                    <option>Ford Cargo 2429 (ABC-1234)</option>
+                                    <option>VW Constellation (DEF-5678)</option>
+                                </optgroup>
+                                <optgroup label="Motoristas">
+                                    <option>João Silva</option>
+                                    <option>Maria Santos</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-2 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Data de Emissão</label>
+                                <input type="date" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Data de Vencimento</label>
+                                <input type="date" class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Observações</label>
+                            <textarea class="form-input" rows="3" placeholder="Observações sobre o documento..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload e Lembretes -->
+                <div>
+                    <!-- Upload -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Upload do Documento</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="upload-area">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">📄</div>
+                                <div class="font-medium mb-2">Arraste e solte o arquivo aqui</div>
+                                <div class="text-sm text-gray-500 mb-4">ou</div>
+                                <button class="btn btn-outline">Selecionar Arquivo</button>
+                                <input type="file" style="display: none;">
+                            </div>
+
+                            <div class="file-preview">
+                                <div class="file-info">
+                                    <div style="font-size: 1.5rem;">📄</div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">documento.pdf</div>
+                                        <div class="text-sm text-gray-500">PDF • 2.5 MB</div>
+                                    </div>
+                                    <button class="btn btn-outline btn-sm">Remover</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lembretes -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Configurar Lembretes</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="reminder-settings">
+                                <div class="form-group">
+                                    <label class="flex items-center mb-4">
+                                        <input type="checkbox" class="mr-2">
+                                        <span>Ativar lembretes de vencimento</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Enviar primeiro lembrete</label>
+                                    <select class="form-input">
+                                        <option>30 dias antes</option>
+                                        <option>60 dias antes</option>
+                                        <option>90 dias antes</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Frequência dos lembretes</label>
+                                    <select class="form-input">
+                                        <option>Diariamente</option>
+                                        <option>Semanalmente</option>
+                                        <option>Quinzenalmente</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Destinatários</label>
+                                    <select class="form-input" multiple>
+                                        <option>Administradores</option>
+                                        <option>Gerentes</option>
+                                        <option>Responsável pelo veículo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handler para upload de arquivo
+        document.querySelector('.upload-area').addEventListener('click', () => {
+            document.querySelector('input[type="file"]').click();
+        });
+    </script>
+</body>
+</html>

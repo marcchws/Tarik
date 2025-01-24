@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Despesa - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .receipt-upload {
+            border: 2px dashed var(--color-gray-300);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .receipt-upload:hover {
+            border-color: var(--color-primary);
+            background: var(--color-gray-50);
+        }
+
+        .receipt-preview {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .installment-row {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .installment-row:last-child {
+            border-bottom: none;
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto var(--spacing-sm);
+        }
+
+        .category-option {
+            text-align: center;
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .category-option:hover {
+            border-color: var(--color-primary);
+            background: var(--color-gray-50);
+        }
+
+        .category-option.selected {
+            border-color: var(--color-primary);
+            background: var(--color-gray-50);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Nova Despesa</h1>
+                    <p class="text-gray-500">Registro de despesa da frota</p>
+                </div>
+                <div>
+                    <button class="btn btn-outline mr-2">Cancelar</button>
+                    <button class="btn btn-primary">Salvar Despesa</button>
+                </div>
+            </div>
+
+            <div class="grid grid-2 gap-6">
+                <!-- Informações da Despesa -->
+                <div>
+                    <!-- Categorias -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Categoria</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="grid grid-4 gap-4">
+                                <div class="category-option selected">
+                                    <div class="category-icon">⛽</div>
+                                    <div class="font-medium">Combustível</div>
+                                </div>
+                                <div class="category-option">
+                                    <div class="category-icon">🔧</div>
+                                    <div class="font-medium">Manutenção</div>
+                                </div>
+                                <div class="category-option">
+                                    <div class="category-icon">🛂</div>
+                                    <div class="font-medium">Documentação</div>
+                                </div>
+                                <div class="category-option">
+                                    <div class="category-icon">💰</div>
+                                    <div class="font-medium">Outros</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detalhes -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Detalhes da Despesa</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Descrição</label>
+                                <input type="text" class="form-input" placeholder="Ex: Abastecimento Diesel">
+                            </div>
+
+                            <div class="grid grid-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">Data</label>
+                                    <input type="date" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Veículo</label>
+                                    <select class="form-input">
+                                        <option>Selecione o veículo</option>
+                                        <option>Ford Cargo 2429 (ABC-1234)</option>
+                                        <option>VW Constellation (DEF-5678)</option>
+                                        <option>Scania R450 (GHI-9012)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">Valor</label>
+                                    <input type="text" class="form-input" placeholder="R$ 0,00">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Forma de Pagamento</label>
+                                    <select class="form-input">
+                                        <option>Dinheiro</option>
+                                        <option>Cartão de Crédito</option>
+                                        <option>Cartão de Débito</option>
+                                        <option>Transferência</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <label class="form-label">Observações</label>
+                                <textarea class="form-input" rows="3" placeholder="Observações adicionais..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Parcelamento -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-bold m-0">Parcelamento</h3>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Despesa parcelada</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="installment-row">
+                                <div class="form-group mb-0 flex-1">
+                                    <label class="form-label">Parcela 1 de 3</label>
+                                    <input type="text" class="form-input" value="R$ 450,00">
+                                </div>
+                                <div class="form-group mb-0 flex-1">
+                                    <label class="form-label">Vencimento</label>
+                                    <input type="date" class="form-input">
+                                </div>
+                                <button class="btn btn-outline mt-4">🗑️</button>
+                            </div>
+
+                            <div class="installment-row">
+                                <div class="form-group mb-0 flex-1">
+                                    <label class="form-label">Parcela 2 de 3</label>
+                                    <input type="text" class="form-input" value="R$ 450,00">
+                                </div>
+                                <div class="form-group mb-0 flex-1">
+                                    <label class="form-label">Vencimento</label>
+                                    <input type="date" class="form-input">
+                                </div>
+                                <button class="btn btn-outline mt-4">🗑️</button>
+                            </div>
+
+                            <div class="installment-row">
+                                <div class="form-group mb-0 flex-1">
+                                    <label class="form-label">Parcela 3 de 3</label>
+                                    <input type="text" class="form-input" value="R$ 450,00">
+                                </div>
+                                <div class="form-group mb-0 flex-1">
+                                    <label class="form-label">Vencimento</label>
+                                    <input type="date" class="form-input">
+                                </div>
+                                <button class="btn btn-outline mt-4">🗑️</button>
+                            </div>
+
+                            <button class="btn btn-outline w-full mt-4">
+                                + Adicionar Parcela
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload e Centro de Custo -->
+                <div>
+                    <!-- Upload de Comprovante -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Comprovante</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="receipt-upload">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">📄</div>
+                                <div class="font-medium mb-2">Arraste e solte o comprovante aqui</div>
+                                <div class="text-sm text-gray-500 mb-4">ou</div>
+                                <button class="btn btn-outline">Selecionar Arquivo</button>
+                                <input type="file" style="display: none;">
+                            </div>
+
+                            <div class="receipt-preview">
+                                <div class="flex gap-4 items-center">
+                                    <div style="font-size: 1.5rem;">📄</div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">comprovante.pdf</div>
+                                        <div class="text-sm text-gray-500">PDF • 250 KB</div>
+                                    </div>
+                                    <button class="btn btn-outline btn-sm">Remover</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Centro de Custo -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Centro de Custo</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Centro de Custo</label>
+                                <select class="form-input">
+                                    <option>Selecione o centro de custo</option>
+                                    <option>Operacional</option>
+                                    <option>Manutenção</option>
+                                    <option>Administrativo</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Projeto</label>
+                                <select class="form-input">
+                                    <option>Selecione o projeto</option>
+                                    <option>Projeto A</option>
+                                    <option>Projeto B</option>
+                                    <option>Projeto C</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <label class="form-label">Classificação</label>
+                                <select class="form-input">
+                                    <option>Selecione a classificação</option>
+                                    <option>Operacional</option>
+                                    <option>Investimento</option>
+                                    <option>Manutenção</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handler para upload de arquivo
+        document.querySelector('.receipt-upload').addEventListener('click', () => {
+            document.querySelector('input[type="file"]').click();
+        });
+
+        // Handler para seleção de categoria
+        document.querySelectorAll('.category-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.category-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                option.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
