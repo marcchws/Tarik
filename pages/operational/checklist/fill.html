@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preencher Checklist - Tarik</title>
+    <style>
+        .checklist-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .checklist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .checklist-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #e4e4e7;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-approved {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid #e4e4e7;
+        }
+
+        .photo-upload {
+            border: 2px dashed #e4e4e7;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="checklist-container">
+        <!-- Informações da OS -->
+        <div class="info-section">
+            <div class="checklist-header">
+                <div>
+                    <h2 style="margin: 0;">Checklist - OS #001</h2
+                        <div class="checklist-container">
+                            <!-- Informações da OS -->
+                            <div class="info-section">
+                                <div class="checklist-header">
+                                    <div>
+                                        <h2 style="margin: 0;">Checklist - OS #001</h2>
+                                        <p style="color: #6b7280; margin: 0;">Veículo: Ford Cargo 2429 - Placa ABC1234</p>
+                                    </div>
+                                    <span class="status-badge status-pending">Em Andamento</span>
+                                </div>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                                    <div>
+                                        <div style="color: #6b7280;">Motorista</div>
+                                        <div style="font-weight: 500;">João Silva</div>
+                                    </div>
+                                    <div>
+                                        <div style="color: #6b7280;">Data</div>
+                                        <div style="font-weight: 500;">24/01/2025 09:30</div>
+                                    </div>
+                                    <div>
+                                        <div style="color: #6b7280;">Template</div>
+                                        <div style="font-weight: 500;">Checklist Veículos Pesados</div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Itens do Checklist -->
+                            <div class="checklist-item">
+                                <div class="item-header">
+                                    <h3 style="margin: 0;">1. Nível de óleo do motor</h3>
+                                    <span class="status-badge status-approved">Aprovado</span>
+                                </div>
+                                <div style="margin: 1rem 0;">
+                                    <div style="margin-bottom: 0.5rem;">
+                                        <input type="radio" id="oil-ok" name="oil" checked>
+                                        <label for="oil-ok">Adequado</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="oil-not-ok" name="oil">
+                                        <label for="oil-not-ok">Necessita manutenção</label>
+                                    </div>
+                                </div>
+                                <textarea style="width: 100%; padding: 0.5rem; border: 1px solid #e4e4e7; border-radius: 4px;"
+                                          placeholder="Observações..."></textarea>
+                                <div class="photo-upload">
+                                    <div>📸 Anexar foto</div>
+                                    <input type="file" accept="image/*" style="display: none;">
+                                </div>
+                            </div>
+                    
+                            <div class="checklist-item">
+                                <div class="item-header">
+                                    <h3 style="margin: 0;">2. Pressão dos pneus</h3>
+                                    <span class="status-badge status-pending">Pendente</span>
+                                </div>
+                                <div style="margin: 1rem 0;">
+                                    <div style="margin-bottom: 0.5rem;">
+                                        <input type="radio" id="tires-ok" name="tires">
+                                        <label for="tires-ok">Adequado</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="tires-not-ok" name="tires">
+                                        <label for="tires-not-ok">Necessita calibragem</label>
+                                    </div>
+                                </div>
+                                <textarea style="width: 100%; padding: 0.5rem; border: 1px solid #e4e4e7; border-radius: 4px;"
+                                          placeholder="Observações..."></textarea>
+                                <div class="photo-upload">
+                                    <div>📸 Anexar foto</div>
+                                    <input type="file" accept="image/*" style="display: none;">
+                                </div>
+                            </div>
+                    
+                            <!-- Assinatura Digital -->
+                            <div class="info-section">
+                                <h3 style="margin-bottom: 1rem;">Assinatura Digital</h3>
+                                <div style="border: 1px solid #e4e4e7; border-radius: 4px; height: 200px; display: flex; align-items: center; justify-content: center;">
+                                    Área para assinatura
+                                </div>
+                            </div>
+                    
+                            <!-- Botões de Ação -->
+                            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem;">
+                                <button class="btn btn-outline">Salvar Rascunho</button>
+                                <button class="btn btn-primary">Finalizar Checklist</button>
+                            </div>
+                        </div>
+                    
+                        <script>
+                            // Simulação de upload de foto
+                            document.querySelectorAll('.photo-upload').forEach(upload => {
+                                upload.addEventListener('click', () => {
+                                    upload.querySelector('input[type="file"]').click();
+                                });
+                            });
+                        </script>
+                    </body>
+                    </html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Veículo - Tarik</title>
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tab-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tab-header {
+            display: flex;
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .tab-button.active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .tab-content {
+            padding: 1.5rem;
+        }
+
+        .timeline {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-item {
+            padding: 1rem 0;
+            border-left: 2px solid #e4e4e7;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #2563eb;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 1.5rem;
+        }
+
+        .maintenance-alert {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header-section">
+            <div>
+                <h1 style="margin: 0;">Ford Cargo 2429 - ABC1234</h1>
+                <div style="color: #6b7280;">Caminhão • Diesel • 2022/2023</div>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span class="status-badge status-active">Ativo</span>
+                <button class="btn btn-primary">Editar</button>
+            </div>
+        </div>
+
+        <!-- Alertas -->
+        <div class="maintenance-alert">
+            ⚠️ Próxima manutenção preventiva em 500 km ou 5 dias
+        </div>
+
+        <!-- Cards Métricas -->
+        <div class="card-grid">
+            <div class="info-card">
+                <div>
+                    <div style="color: #6b7280;">Km Atual</div>
+                    <div style="font-size: 1.5rem; font-weight: 500;">45.000 km</div>
+                </div>
+                <div style="font-size: 2rem;">🛣️</div>
+            </div>
+            <div class="info-card">
+                <div>
+                    <div style="color: #6b7280;">Consumo Médio</div>
+                    <div style="font-size: 1.5rem; font-weight: 500;">3.2 km/l</div>
+                </div>
+                <div style="font-size: 2rem;">⛽</div>
+            </div>
+            <div class="info-card">
+                <div>
+                    <div style="color: #6b7280;">Custo/km</div>
+                    <div style="font-size: 1.5rem; font-weight: 500;">R$ 2,45</div>
+                </div>
+                <div style="font-size: 2rem;">💰</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tab-container">
+            <div class="tab-header">
+                <button class="tab-button active">Informações</button>
+                <button class="tab-button">Manutenções</button>
+                <button class="tab-button">Documentos</button>
+                <button class="tab-button">Histórico</button>
+            </div>
+
+            <div class="tab-content">
+                <!-- Tab Informações -->
+                <div>
+                    <h3>Especificações Técnicas</h3>
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div style="color: #6b7280;">Capacidade</div>
+                            <div style="font-weight: 500;">24.000 kg</div>
+                        </div>
+                        <div class="metric-card">
+                            <div style="color: #6b7280;">Volume</div>
+                            <div style="font-weight: 500;">48 m³</div>
+                        </div>
+                        <div class="metric-card">
+                            <div style="color: #6b7280;">Potência</div>
+                            <div style="font-weight: 500;">290 cv</div>
+                        </div>
+                        <div class="metric-card">
+                            <div style="color: #6b7280;">Eixos</div>
+                            <div style="font-weight: 500;">2</div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">Documentação</h3>
+                    <table class="table">
+                        <tr>
+                            <td>IPVA</td>
+                            <td>Vence em 15/04/2025</td>
+                            <td style="color: #16a34a;">Em dia</td>
+                        </tr>
+                        <tr>
+                            <td>Seguro</td>
+                            <td>Vence em 30/06/2025</td>
+                            <td style="color: #16a34a;">Em dia</td>
+                        </tr>
+                        <tr>
+                            <td>Licenciamento</td>
+                            <td>Vence em 31/12/2025</td>
+                            <td style="color: #16a34a;">Em dia</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline de Atividades -->
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+            <h3 style="margin-top: 0;">Atividades Recentes</h3>
+            <ul class="timeline">
+                <li class="timeline-item">
+                    <div style="font-weight: 500;">Manutenção Preventiva</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">15/01/2025</div>
+                    <div style="margin-top: 0.5rem;">Troca de óleo e filtros realizada</div>
+                </li>
+                <li class="timeline-item">
+                    <div style="font-weight: 500;">Checklist Realizado</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">14/01/2025</div>
+                    <div style="margin-top: 0.5rem;">Todos os itens verificados e aprovados</div>
+                </li>
+                <li class="timeline-item">
+                    <div style="font-weight: 500;">Abastecimento</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">13/01/2025</div>
+                    <div style="margin-top: 0.5rem;">200L de diesel - R$ 1.200,00</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

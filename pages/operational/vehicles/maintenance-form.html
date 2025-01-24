@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Manutenção - Tarik</title>
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e4e4e7;
+            border-radius: 4px;
+        }
+
+        .service-list {
+            border: 1px solid #e4e4e7;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: 1fr auto auto auto;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #e4e4e7;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid #e4e4e7;
+        }
+
+        .file-upload {
+            border: 2px dashed #e4e4e7;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="maintenanceForm">
+            <!-- Informações Básicas -->
+            <div class="form-section">
+                <h2 style="margin-top: 0;">Informações da Manutenção</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Tipo</label>
+                        <select class="form-input">
+                            <option>Preventiva</option>
+                            <option>Corretiva</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Data</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fornecedor</label>
+                        <input type="text" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Km Atual</label>
+                        <input type="number" class="form-input">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Serviços -->
+            <div class="form-section">
+                <h2 style="margin-top: 0;">Serviços Realizados</h2>
+                <div class="service-list">
+                    <div class="service-item">
+                        <input type="text" class="form-input" placeholder="Descrição do serviço">
+                        <input type="text" class="form-input" placeholder="Qtd" style="width: 80px;">
+                        <input type="text" class="form-input" placeholder="Valor" style="width: 120px;">
+                        <button type="button" class="btn btn-outline">🗑️</button>
+                    </div>
+                    <div class="service-item">
+                        <input type="text" class="form-input" placeholder="Descrição do serviço">
+                        <input type="text" class="form-input" placeholder="Qtd" style="width: 80px;">
+                        <input type="text" class="form-input" placeholder="Valor" style="width: 120px;">
+                        <button type="button" class="btn btn-outline">🗑️</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">
+                    + Adicionar Serviço
+                </button>
+
+                <div style="margin-top: 1rem; text-align: right;">
+                    <div style="color: #6b7280;">Total</div>
+                    <div style="font-size: 1.25rem; font-weight: 500;">R$ 0,00</div>
+                </div>
+            </div>
+
+            <!-- Peças -->
+            <div class="form-section">
+                <h2 style="margin-top: 0;">Peças Utilizadas</h2>
+                <div class="service-list">
+                    <div class="service-item">
+                        <input type="text" class="form-input" placeholder="Peça">
+                        <input type="text" class="form-input" placeholder="Qtd" style="width: 80px;">
+                        <input type="text" class="form-input" placeholder="Valor" style="width: 120px;">
+                        <button type="button" class="btn btn-outline">🗑️</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">
+                    + Adicionar Peça
+                </button>
+            </div>
+
+            <!-- Observações -->
+            <div class="form-section">
+                <h2 style="margin-top: 0;">Observações</h2>
+                <textarea class="form-input" style="min-height: 100px;" placeholder="Observações adicionais..."></textarea>
+            </div>
+
+            <!-- Anexos -->
+            <div class="form-section">
+                <h2 style="margin-top: 0;">Anexos</h2>
+                <div class="file-upload">
+                    <div>📎 Arraste arquivos ou clique para selecionar</div>
+                    <input type="file" multiple style="display: none;">
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem;">
+                <button type="button" class="btn btn-outline">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar Manutenção</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('maintenanceForm').onsubmit = function(e) {
+            e.preventDefault();
+            alert('Manutenção registrada com sucesso!');
+        };
+    </script>
+</body>
+</html>

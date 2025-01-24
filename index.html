@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarik - Sistema de Gestão de Frotas</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <div class="text-center mb-8">
+                <h1 class="text-xl font-bold mb-2">Tarik</h1>
+                <p class="text-gray-500">Sistema de Gestão de Frotas</p>
+            </div>
+
+            <div class="grid grid-3 gap-6">
+                <!-- Dashboard -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-lg font-bold m-0">Dashboard</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-none">
+                            <li class="mb-2">
+                                <a href="/pages/dashboard/index.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Dashboard Principal
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/dashboard/kpis.html" class="block p-2 rounded hover:bg-gray-50">
+                                    KPIs
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/dashboard/reports.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Relatórios
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/dashboard/schedule-report.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Agendar Relatório
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/dashboard/custom-report.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Relatório Customizado
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Operacional -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-lg font-bold m-0">Operacional</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- Ordens de Serviço -->
+                        <h3 class="text-sm font-bold text-gray-500 mb-2">Ordens de Serviço</h3>
+                        <ul class="list-none mb-4">
+                            <li class="mb-2">
+                                <a href="/pages/operational/service-orders/list.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Listagem de OS
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/service-orders/form.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Nova/Editar OS
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/service-orders/view.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Visualizar OS
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Checklist -->
+                        <h3 class="text-sm font-bold text-gray-500 mb-2">Checklist</h3>
+                        <ul class="list-none mb-4">
+                            <li class="mb-2">
+                                <a href="/pages/operational/checklist/templates.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Templates
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/checklist/template-form.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Novo/Editar Template
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/checklist/fill.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Preencher Checklist
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/checklist/history.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Histórico
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Veículos -->
+                        <h3 class="text-sm font-bold text-gray-500 mb-2">Veículos</h3>
+                        <ul class="list-none mb-4">
+                            <li class="mb-2">
+                                <a href="/pages/operational/vehicles/list.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Listagem de Veículos
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/vehicles/form.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Novo/Editar Veículo
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/vehicles/view.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Detalhes do Veículo
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/vehicles/maintenance.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Manutenções
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/vehicles/maintenance-form.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Nova/Editar Manutenção
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Motoristas -->
+                        <h3 class="text-sm font-bold text-gray-500 mb-2">Motoristas</h3>
+                        <ul class="list-none">
+                            <li class="mb-2">
+                                <a href="/pages/operational/drivers/list.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Listagem de Motoristas
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/drivers/form.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Novo/Editar Motorista
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/operational/drivers/view.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Perfil do Motorista
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Configurações -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-lg font-bold m-0">Configurações</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-none">
+                            <li class="mb-2">
+                                <a href="/pages/settings/index.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Configurações Gerais
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/settings/users.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Usuários
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/settings/user-form.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Novo/Editar Usuário
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/settings/roles.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Papéis e Permissões
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="/pages/settings/role-form.html" class="block p-2 rounded hover:bg-gray-50">
+                                    Novo/Editar Papel
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

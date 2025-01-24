@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frota - Tarik</title>
+    <style>
+        .vehicles-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filters-bar {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-group {
+            display: flex;
+            gap: 1rem;
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .filter-input {
+            padding: 0.5rem;
+            border: 1px solid #e4e4e7;
+            border-radius: 4px;
+            flex: 1;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+        }
+
+        .vehicles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .vehicle-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .vehicle-image {
+            width: 100%;
+            height: 160px;
+            background: #f4f4f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vehicle-info {
+            padding: 1rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            display: inline-block;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-maintenance {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .info-item {
+            font-size: 0.875rem;
+        }
+
+        .info-label {
+            color: #6b7280;
+        }
+
+        .vehicle-actions {
+            padding: 1rem;
+            border-top: 1px solid #e4e4e7;
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            border: 1px solid #e4e4e7;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="vehicles-container">
+        <!-- Barra de Filtros -->
+        <div class="filters-bar">
+            <div class="search-group">
+                <input type="text" class="filter-input" placeholder="Buscar por placa, modelo...">
+                <select class="filter-input">
+                    <option>Todos os status</option>
+                    <option>Ativo</option>
+                    <option>Manutenção</option>
+                    <option>Inativo</option>
+                </select>
+                <select class="filter-input">
+                    <option>Todas as categorias</option>
+                    <option>Caminhão</option>
+                    <option>Van</option>
+                    <option>Utilitário</option>
+                </select>
+            </div>
+            <button class="btn btn-primary">Adicionar Veículo</button>
+        </div>
+
+        <!-- Grid de Veículos -->
+        <div class="vehicles-grid">
+            <!-- Veículo 1 -->
+            <div class="vehicle-card">
+                <div class="vehicle-image">
+                    🚛
+                </div>
+                <div class="vehicle-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <h3 style="margin: 0;">Ford Cargo 2429</h3>
+                            <div style="color: #6b7280;">ABC-1234</div>
+                        </div>
+                        <span class="status-badge status-active">Ativo</span>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Categoria</div>
+                            <div>Caminhão</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Ano</div>
+                            <div>2022</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Última Revisão</div>
+                            <div>15/01/2025</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Km Atual</div>
+                            <div>45.000</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vehicle-actions">
+                    <button class="btn-icon">📝</button>
+                    <button class="btn-icon">📊</button>
+                    <button class="btn-icon">⚙️</button>
+                </div>
+            </div>
+
+            <!-- Veículo 2 -->
+            <div class="vehicle-card">
+                <div class="vehicle-image">
+                    🚛
+                </div>
+                <div class="vehicle-info">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <h3 style="margin: 0;">VW Constellation</h3>
+                            <div style="color: #6b7280;">DEF-5678</div>
+                        </div>
+                        <span class="status-badge status-maintenance">Manutenção</span>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Categoria</div>
+                            <div>Caminhão</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Ano</div>
+                            <div>2021</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Última Revisão</div>
+                            <div>20/01/2025</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Km Atual</div>
+                            <div>62.500</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vehicle-actions">
+                    <button class="btn-icon">📝</button>
+                    <button class="btn-icon">📊</button>
+                    <button class="btn-icon">⚙️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paginação -->
+        <div style="display: flex; justify-content: flex-end; margin-top: 1rem; gap: 0.5rem;">
+            <button class="btn">Anterior</button>
+            <button class="btn" style="background: #2563eb; color: white;">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn">Próximo</button>
+        </div>
+    </div>
+</body>
+</html>

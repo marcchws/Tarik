@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .avatar-upload {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--color-gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            margin: 0 auto var(--spacing-lg);
+            border: 2px dashed var(--color-gray-300);
+            transition: all 0.2s ease;
+        }
+
+        .avatar-upload:hover {
+            border-color: var(--color-primary);
+            background: var(--color-gray-50);
+        }
+
+        .permission-group {
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+
+        .permission-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .permission-item label {
+            margin-left: var(--spacing-sm);
+            flex: 1;
+        }
+
+        .validation-error {
+            color: var(--color-error);
+            font-size: 0.875rem;
+            margin-top: var(--spacing-xs);
+        }
+
+        .password-strength {
+            height: 4px;
+            background: var(--color-gray-200);
+            border-radius: var(--radius-full);
+            margin-top: var(--spacing-xs);
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .strength-weak { 
+            width: 33%;
+            background: var(--color-error);
+        }
+
+        .strength-medium {
+            width: 66%;
+            background: var(--color-warning);
+        }
+
+        .strength-strong {
+            width: 100%;
+            background: var(--color-success);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Novo Usuário</h1>
+                    <p class="text-gray-500">Preencha as informações do usuário</p>
+                </div>
+                <div>
+                    <button class="btn btn-outline mr-2">Cancelar</button>
+                    <button class="btn btn-primary">Salvar Usuário</button>
+                </div>
+            </div>
+
+            <div class="grid grid-2 gap-6">
+                <!-- Informações Principais -->
+                <div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Informações Básicas</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Avatar Upload -->
+                            <div class="avatar-upload">
+                                👤
+                                <input type="file" style="display: none;" accept="image/*">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Nome Completo</label>
+                                <input type="text" class="form-input" placeholder="Digite o nome completo">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" placeholder="Digite o email">
+                                <span class="validation-error">Email já cadastrado no sistema</span>
+                            </div>
+
+                            <div class="grid grid-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">Senha</label>
+                                    <input type="password" class="form-input" placeholder="Digite a senha">
+                                    <div class="password-strength">
+                                        <div class="password-strength-bar strength-medium"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Confirmar Senha</label>
+                                    <input type="password" class="form-input" placeholder="Confirme a senha">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Configurações de Acesso</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Perfil</label>
+                                <select class="form-input">
+                                    <option>Selecione um perfil</option>
+                                    <option>Administrador</option>
+                                    <option>Gerente</option>
+                                    <option>Usuário</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Status</label>
+                                <select class="form-input">
+                                    <option>Ativo</option>
+                                    <option>Inativo</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Exigir troca de senha no primeiro acesso</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permissões -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-lg font-bold m-0">Permissões</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Frota -->
+                        <div class="permission-group">
+                            <h4 class="font-medium mb-3">Frota</h4>
+                            <div class="permission-item">
+                                <input type="checkbox" id="fleet-view">
+                                <label for="fleet-view">Visualizar veículos</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="fleet-create">
+                                <label for="fleet-create">Cadastrar veículos</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="fleet-edit">
+                                <label for="fleet-edit">Editar veículos</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="fleet-delete">
+                                <label for="fleet-delete">Excluir veículos</label>
+                            </div>
+                        </div>
+
+                        <!-- Ordens de Serviço -->
+                        <div class="permission-group">
+                            <h4 class="font-medium mb-3">Ordens de Serviço</h4>
+                            <div class="permission-item">
+                                <input type="checkbox" id="os-view">
+                                <label for="os-view">Visualizar OS</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="os-create">
+                                <label for="os-create">Criar OS</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="os-edit">
+                                <label for="os-edit">Editar OS</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="os-delete">
+                                <label for="os-delete">Cancelar OS</label>
+                            </div>
+                        </div>
+
+                        <!-- Relatórios -->
+                        <div class="permission-group">
+                            <h4 class="font-medium mb-3">Relatórios</h4>
+                            <div class="permission-item">
+                                <input type="checkbox" id="reports-view">
+                                <label for="reports-view">Visualizar relatórios</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="reports-create">
+                                <label for="reports-create">Criar relatórios</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="reports-export">
+                                <label for="reports-export">Exportar relatórios</label>
+                            </div>
+                        </div>
+
+                        <!-- Configurações -->
+                        <div class="permission-group mb-0">
+                            <h4 class="font-medium mb-3">Configurações</h4>
+                            <div class="permission-item">
+                                <input type="checkbox" id="settings-view">
+                                <label for="settings-view">Visualizar configurações</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="settings-edit">
+                                <label for="settings-edit">Editar configurações</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="users-manage">
+                                <label for="users-manage">Gerenciar usuários</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handler para upload de avatar
+        document.querySelector('.avatar-upload').addEventListener('click', () => {
+            document.querySelector('.avatar-upload input[type="file"]').click();
+        });
+    </script>
+</body>
+</html>

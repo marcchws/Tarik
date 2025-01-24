@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Template - Tarik</title>
+    <style>
+        .editor-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e4e4e7;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .items-container {
+            border: 1px solid #e4e4e7;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .item-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+
+        .drag-handle {
+            cursor: move;
+            color: #9ca3af;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid #e4e4e7;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+            border: none;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <form id="templateForm">
+            <!-- Informações Básicas -->
+            <div class="form-group">
+                <label class="form-label">Nome do Template</label>
+                <input type="text" class="form-input" value="Checklist Veículos Pesados">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Descrição</label>
+                <textarea class="form-input form-textarea" 
+                          placeholder="Descreva o propósito deste template...">Template padrão para inspeção de veículos pesados antes da operação.</textarea>
+            </div>
+
+            <!-- Configurações -->
+            <div class="form-group">
+                <label class="form-label">Configurações</label>
+                <div class="settings-grid">
+                    <div>
+                        <input type="checkbox" id="required" checked>
+                        <label for="required">Obrigatório para OS</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="photo" checked>
+                        <label for="photo">Requer foto</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="signature">
+                        <label for="signature">Requer assinatura</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Itens do Checklist -->
+            <div class="form-group">
+                <label class="form-label">Itens do Checklist</label>
+                <div class="items-container">
+                    <!-- Item 1 -->
+                    <div class="item-row">
+                        <span class="drag-handle">⋮</span>
+                        <input type="text" class="form-input" value="Nível de óleo do motor">
+                        <button type="button" class="btn btn-outline">⚙️</button>
+                        <button type="button" class="btn btn-outline">🗑️</button>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="item-row">
+                        <span class="drag-handle">⋮</span>
+                        <input type="text" class="form-input" value="Pressão dos pneus">
+                        <button type="button" class="btn btn-outline">⚙️</button>
+                        <button type="button" class="btn btn-outline">🗑️</button>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="item-row">
+                        <span class="drag-handle">⋮</span>
+                        <input type="text" class="form-input" value="Sistema de freios">
+                        <button type="button" class="btn btn-outline">⚙️</button>
+                        <button type="button" class="btn btn-outline">🗑️</button>
+                    </div>
+
+                    <!-- Botão Adicionar -->
+                    <button type="button" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">
+                        + Adicionar Item
+                    </button>
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                <button type="button" class="btn btn-outline">Cancelar</button>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-danger">Excluir Template</button>
+                    <button type="submit" class="btn btn-primary">Salvar Template</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('templateForm').onsubmit = function(e) {
+            e.preventDefault();
+            alert('Template salvo com sucesso!');
+        };
+    </script>
+</body>
+</html>

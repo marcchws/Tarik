@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Motorista - Tarik</title>
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .driver-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .avatar-circle {
+            width: 100px;
+            height: 100px;
+            background: #f4f4f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tab-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tab-header {
+            display: flex;
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .tab-button.active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .tab-content {
+            padding: 1.5rem;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .info-table td:first-child {
+            color: #6b7280;
+            width: 200px;
+        }
+
+        .timeline {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-item {
+            padding: 1rem 0;
+            border-left: 2px solid #e4e4e7;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #2563eb;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 1.5rem;
+        }
+
+        .chart-container {
+            height: 300px;
+            margin: 1rem 0;
+            background: #f8fafc;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+        }
+
+        .alert {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header-section">
+            <div class="driver-info">
+                <div class="avatar-circle">👤</div>
+                <div>
+                    <h1 style="margin: 0;">João Silva</h1>
+                    <div style="color: #6b7280;">Motorista Sênior • CNH: 123456789</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span class="status-badge status-active">Ativo</span>
+                <button class="btn btn-primary">Editar</button>
+            </div>
+        </div>
+
+        <!-- Alertas -->
+        <div class="alert">
+            ⚠️ CNH vence em 30 dias
+        </div>
+
+        <!-- Métricas -->
+        <div class="card-grid">
+            <div class="metric-card">
+                <div>
+                    <div style="color: #6b7280;">Entregas</div>
+                    <div style="font-size: 1.5rem; font-weight: 500;">150</div>
+                    <div style="color: #16a34a; font-size: 0.875rem;">+12% este mês</div>
+                </div>
+                <div style="font-size: 2rem;">📦</div>
+            </div>
+            <div class="metric-card">
+                <div>
+                    <div style="color: #6b7280;">Km Rodados</div>
+                    <div style="font-size: 1.5rem; font-weight: 500;">25.000 km</div>
+                    <div style="color: #16a34a; font-size: 0.875rem;">+8% este mês</div>
+                </div>
+                <div style="font-size: 2rem;">🛣️</div>
+            </div>
+            <div class="metric-card">
+                <div>
+                    <div style="color: #6b7280;">Avaliação</div>
+                    <div style="font-size: 1.5rem; font-weight: 500;">4.8</div>
+                    <div style="color: #16a34a; font-size: 0.875rem;">+0.2 este mês</div>
+                </div>
+                <div style="font-size: 2rem;">⭐</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tab-container">
+            <div class="tab-header">
+                <button class="tab-button active">Informações</button>
+                <button class="tab-button">Histórico</button>
+                <button class="tab-button">Documentos</button>
+                <button class="tab-button">Performance</button>
+            </div>
+
+            <div class="tab-content">
+                <!-- Tab Informações -->
+                <div>
+                    <h3>Dados Pessoais</h3>
+                    <table class="info-table">
+                        <tr>
+                            <td>CPF</td>
+                            <td>123.456.789-00</td>
+                        </tr>
+                        <tr>
+                            <td>RG</td>
+                            <td>12.345.678-9</td>
+                        </tr>
+                        <tr>
+                            <td>Data de Nascimento</td>
+                            <td>15/05/1985</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>joao.silva@email.com</td>
+                        </tr>
+                        <tr>
+                            <td>Telefone</td>
+                            <td>(11) 98765-4321</td>
+                        </tr>
+                    </table>
+
+                    <h3 style="margin-top: 2rem;">Dados da CNH</h3>
+                    <table class="info-table">
+                        <tr>
+                            <td>Número</td>
+                            <td>123456789</td>
+                        </tr>
+                        <tr>
+                            <td>Categoria</td>
+                            <td>E</td>
+                        </tr>
+                        <tr>
+                            <td>Validade</td>
+                            <td>15/12/2025</td>
+                        </tr>
+                    </table>
+
+                    <h3 style="margin-top: 2rem;">Dados Profissionais</h3>
+                    <table class="info-table">
+                        <tr>
+                            <td>Data de Admissão</td>
+                            <td>01/06/2023</td>
+                        </tr>
+                        <tr>
+                            <td>Cargo</td>
+                            <td>Motorista Sênior</td>
+                        </tr>
+                        <tr>
+                            <td>Veículo Atual</td>
+                            <td>Ford Cargo 2429 - ABC1234</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline de Atividades -->
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+            <h3 style="margin-top: 0;">Atividades Recentes</h3>
+            <ul class="timeline">
+                <li class="timeline-item">
+                    <div style="font-weight: 500;">Entrega Concluída</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">24/01/2025</div>
+                    <div style="margin-top: 0.5rem;">OS #001 - Entrega realizada com sucesso</div>
+                </li>
+                <li class="timeline-item">
+                    <div style="font-weight: 500;">Checklist Realizado</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">24/01/2025</div>
+                    <div style="margin-top: 0.5rem;">Checklist diário aprovado</div>
+                </li>
+                <li class="timeline-item">
+                    <div style="font-weight: 500;">Nova OS Atribuída</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">24/01/2025</div>
+                    <div style="margin-top: 0.5rem;">OS #002 atribuída</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

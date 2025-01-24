@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Ordem de Serviço - Tarik</title>
+    <style>
+        .view-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .info-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+        }
+
+        .info-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: #111827;
+            font-weight: 500;
+        }
+
+        .timeline {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-item {
+            padding: 1rem 0;
+            border-left: 2px solid #e4e4e7;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #2563eb;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 1.5rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-completed {
+            background: #dcfce7;
+            color: #166534;
+        }
+    </style>
+</head>
+<body>
+    <div class="view-container">
+        <!-- Cabeçalho -->
+        <div class="info-section">
+            <div class="info-header">
+                <div>
+                    <h1 style="margin: 0;">Ordem de Serviço #OS001</h1>
+                    <p style="color: #6b7280;">Criada em 24/01/2025 às 09:30</p>
+                </div>
+                <span class="status-badge status-completed">Concluído</span>
+            </div>
+        </div>
+
+        <!-- Informações do Veículo e Motorista -->
+        <div class="info-section">
+            <h2 style="margin-bottom: 1rem;">Detalhes da Operação</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Veículo</div>
+                    <div class="info-value">Ford Cargo 2429</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Placa</div>
+                    <div class="info-value">ABC1234</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Motorista</div>
+                    <div class="info-value">João Silva</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Tipo de Operação</div>
+                    <div class="info-value">Entrega</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="info-section">
+            <h2 style="margin-bottom: 1rem;">Checklist</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div>
+                    <div style="margin-bottom: 0.5rem;">✅ Nível de óleo do motor</div>
+                    <div style="margin-bottom: 0.5rem;">✅ Pressão dos pneus</div>
+                    <div style="margin-bottom: 0.5rem;">✅ Freios</div>
+                    <div style="margin-bottom: 0.5rem;">✅ Luzes</div>
+                    <div style="margin-bottom: 0.5rem;">✅ Documentação</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="info-section">
+            <h2 style="margin-bottom: 1rem;">Timeline</h2>
+            <ul class="timeline">
+                <li class="timeline-item">
+                    <div style="font-weight: 500;">OS Concluída</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">24/01/2025 16:30</div>
+                    <div style="margin-top: 0.5rem;">Operação finalizada com sucesso</div>
+                </li>
+                <li class="timeline-item">
+                    <div style="font-weight: 500;">Checklist Aprovado</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">24/01/2025 09:45</div>
+                    <div style="margin-top: 0.5rem;">Todos os itens verificados e aprovados</div>
+                </li>
+                <li class="timeline-item">
+                    <div style="font-weight: 500;">OS Criada</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">24/01/2025 09:30</div>
+                    <div style="margin-top: 0.5rem;">Ordem de serviço registrada no sistema</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Observações -->
+        <div class="info-section">
+            <h2 style="margin-bottom: 1rem;">Observações</h2>
+            <p style="color: #374151;">Operação realizada conforme planejado. Todos os procedimentos de segurança foram seguidos.</p>
+        </div>
+
+        <!-- Anexos -->
+        <div class="info-section">
+            <h2 style="margin-bottom: 1rem;">Anexos</h2>
+            <div style="display: flex; gap: 1rem;">
+                <div style="padding: 1rem; border: 1px solid #e4e4e7; border-radius: 4px; display: flex; align-items: center; gap: 0.5rem;">
+                    📄 checklist-assinado.pdf
+                </div>
+                <div style="padding: 1rem; border: 1px solid #e4e4e7; border-radius: 4px; display: flex; align-items: center; gap: 0.5rem;">
+                    📄 foto-veiculo.jpg
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

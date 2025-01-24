@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .report-card {
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .report-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .report-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .last-generated {
+            font-size: 0.875rem;
+            color: var(--color-gray-500);
+            margin-top: var(--spacing-sm);
+        }
+
+        .schedule-item {
+            padding: var(--spacing-sm);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .favorites-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .favorites-list li {
+            padding: var(--spacing-sm);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .favorites-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Relatórios</h1>
+                    <p class="text-gray-500">Geração e agendamento de relatórios</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary">Novo Agendamento</button>
+                </div>
+            </div>
+
+            <!-- Grid de Relatórios -->
+            <div class="grid grid-3 gap-4 mb-6">
+                <!-- Relatório de Frota -->
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="report-icon">🚛</div>
+                        <h3 class="text-lg font-bold mb-2">Relatório de Frota</h3>
+                        <p class="text-gray-500">Performance geral da frota, custos e manutenções</p>
+                        <div class="last-generated">Última geração: hoje às 08:30</div>
+                    </div>
+                </div>
+
+                <!-- Relatório de Motoristas -->
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="report-icon">👤</div>
+                        <h3 class="text-lg font-bold mb-2">Relatório de Motoristas</h3>
+                        <p class="text-gray-500">Desempenho, entregas e avaliações</p>
+                        <div class="last-generated">Última geração: ontem às 18:00</div>
+                    </div>
+                </div>
+
+                <!-- Relatório Financeiro -->
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="report-icon">💰</div>
+                        <h3 class="text-lg font-bold mb-2">Relatório Financeiro</h3>
+                        <p class="text-gray-500">Custos, ROI e análise financeira</p>
+                        <div class="last-generated">Última geração: 23/01/2025</div>
+                    </div>
+                </div>
+
+                <!-- Relatório de Manutenções -->
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="report-icon">🔧</div>
+                        <h3 class="text-lg font-bold mb-2">Relatório de Manutenções</h3>
+                        <p class="text-gray-500">Histórico e programação de manutenções</p>
+                        <div class="last-generated">Última geração: 22/01/2025</div>
+                    </div>
+                </div>
+
+                <!-- Relatório de Rotas -->
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="report-icon">🗺️</div>
+                        <h3 class="text-lg font-bold mb-2">Relatório de Rotas</h3>
+                        <p class="text-gray-500">Análise de rotas e entregas</p>
+                        <div class="last-generated">Última geração: 21/01/2025</div>
+                    </div>
+                </div>
+
+                <!-- Relatório de Combustível -->
+                <div class="card report-card">
+                    <div class="card-body">
+                        <div class="report-icon">⛽</div>
+                        <h3 class="text-lg font-bold mb-2">Relatório de Combustível</h3>
+                        <p class="text-gray-500">Consumo e custos de combustível</p>
+                        <div class="last-generated">Última geração: 20/01/2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Relatórios Agendados e Favoritos -->
+            <div class="grid grid-2 gap-6">
+                <!-- Relatórios Agendados -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-lg font-bold m-0">Relatórios Agendados</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="schedule-item">
+                            <div class="flex justify-between mb-2">
+                                <div class="font-medium">Relatório de Frota</div>
+                                <div class="badge badge-success">Ativo</div>
+                            </div>
+                            <div class="text-gray-500 mb-2">Diário - 08:00</div>
+                            <div class="flex justify-between">
+                                <div>Próximo: 25/01/2025 08:00</div>
+                                <button class="btn btn-outline">Editar</button>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="flex justify-between mb-2">
+                                <div class="font-medium">Relatório Financeiro</div>
+                                <div class="badge badge-success">Ativo</div>
+                            </div>
+                            <div class="text-gray-500 mb-2">Semanal - Segunda 09:00</div>
+                            <div class="flex justify-between">
+                                <div>Próximo: 29/01/2025 09:00</div>
+                                <button class="btn btn-outline">Editar</button>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="flex justify-between mb-2">
+                                <div class="font-medium">Relatório de Manutenções</div>
+                                <div class="badge badge-warning">Pausado</div>
+                            </div>
+                            <div class="text-gray-500 mb-2">Mensal - Dia 1 10:00</div>
+                            <div class="flex justify-between">
+                                <div>Próximo: 01/02/2025 10:00</div>
+                                <button class="btn btn-outline">Editar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Relatórios Favoritos -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-lg font-bold m-0">Relatórios Favoritos</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="favorites-list">
+                            <li>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-medium">Performance Mensal</div>
+                                        <div class="text-sm text-gray-500">Relatório customizado</div>
+                                    </div>
+                                    <button class="btn btn-outline">Gerar</button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-medium">Análise de Custos</div>
+                                        <div class="text-sm text-gray-500">Relatório customizado</div>
+                                    </div>
+                                    <button class="btn btn-outline">Gerar</button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-medium">Dashboard Executivo</div>
+                                        <div class="text-sm text-gray-500">Relatório customizado</div>
+                                    </div>
+                                    <button class="btn btn-outline">Gerar</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

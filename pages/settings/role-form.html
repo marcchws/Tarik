@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Papel - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .module-permissions {
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .module-header {
+            padding: var(--spacing-md);
+            background: var(--color-gray-50);
+            border-bottom: 1px solid var(--color-gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .permission-list {
+            padding: var(--spacing-md);
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+
+        .permission-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .permission-description {
+            color: var(--color-gray-500);
+            font-size: 0.875rem;
+            margin-top: 2px;
+        }
+
+        .select-all {
+            font-size: 0.875rem;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+
+        .permission-content {
+            margin-left: var(--spacing-sm);
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Novo Papel</h1>
+                    <p class="text-gray-500">Configure as permissões do papel</p>
+                </div>
+                <div>
+                    <button class="btn btn-outline mr-2">Cancelar</button>
+                    <button class="btn btn-primary">Salvar Papel</button>
+                </div>
+            </div>
+
+            <div class="grid grid-2 gap-6">
+                <!-- Informações Básicas -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-lg font-bold m-0">Informações Básicas</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Nome do Papel</label>
+                            <input type="text" class="form-input" placeholder="Ex: Gerente de Operações">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Descrição</label>
+                            <textarea class="form-input" rows="3" placeholder="Descreva as responsabilidades deste papel..."></textarea>
+                        </div>
+
+                        <div class="form-group mb-0">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="mr-2">
+                                <span>Papel padrão para novos usuários</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permissões -->
+                <div>
+                    <!-- Módulo Frota -->
+                    <div class="module-permissions">
+                        <div class="module-header">
+                            <h4 class="font-medium m-0">Frota</h4>
+                            <span class="select-all">Selecionar todos</span>
+                        </div>
+                        <div class="permission-list">
+                            <div class="permission-item">
+                                <input type="checkbox" id="fleet-view">
+                                <div class="permission-content">
+                                    <label for="fleet-view">Visualizar veículos</label>
+                                    <div class="permission-description">Ver lista e detalhes dos veículos</div>
+                                </div>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="fleet-create">
+                                <div class="permission-content">
+                                    <label for="fleet-create">Criar veículos</label>
+                                    <div class="permission-description">Adicionar novos veículos à frota</div>
+                                </div>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="fleet-edit">
+                                <div class="permission-content">
+                                    <label for="fleet-edit">Editar veículos</label>
+                                    <div class="permission-description">Modificar informações dos veículos</div>
+                                </div>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="fleet-delete">
+                                <div class="permission-content">
+                                    <label for="fleet-delete">Excluir veículos</label>
+                                    <div class="permission-description">Remover veículos do sistema</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo OS -->
+                    <div class="module-permissions">
+                        <div class="module-header">
+                            <h4 class="font-medium m-0">Ordens de Serviço</h4>
+                            <span class="select-all">Selecionar todos</span>
+                        </div>
+                        <div class="permission-list">
+                            <div class="permission-item">
+                                <input type="checkbox" id="os-view">
+                                <div class="permission-content">
+                                    <label for="os-view">Visualizar OS</label>
+                                    <div class="permission-description">Ver lista e detalhes das ordens de serviço</div>
+                                </div>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="os-create">
+                                <div class="permission-content">
+                                    <label for="os-create">Criar OS</label>
+                                    <div class="permission-description">Criar novas ordens de serviço</div>
+                                </div>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="os-edit">
+                                <div class="permission-content">
+                                    <label for="os-edit">Editar OS</label>
+                                    <div class="permission-description">Modificar ordens de serviço existentes</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo Relatórios -->
+                    <div class="module-permissions">
+                        <div class="module-header">
+                            <h4 class="font-medium m-0">Relatórios</h4>
+                            <span class="select-all">Selecionar todos</span>
+                        </div>
+                        <div class="permission-list">
+                            <div class="permission-item">
+                                <input type="checkbox" id="reports-view">
+                                <div class="permission-content">
+                                    <label for="reports-view">Visualizar relatórios</label>
+                                    <div class="permission-description">Acessar e visualizar relatórios</div>
+                                </div>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="reports-create">
+                                <div class="permission-content">
+                                    <label for="reports-create">Criar relatórios</label>
+                                    <div class="permission-description">Criar e personalizar relatórios</div>
+                                </div>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="reports-export">
+                                <div class="permission-content">
+                                    <label for="reports-export">Exportar relatórios</label>
+                                    <div class="permission-description">Exportar relatórios em diferentes formatos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo Configurações -->
+                    <div class="module-permissions">
+                        <div class="module-header">
+                            <h4 class="font-medium m-0">Configurações</h4>
+                            <span class="select-all">Selecionar todos</span>
+                        </div>
+                        <div class="permission-list">
+                            <div class="permission-item">
+                                <input type="checkbox" id="settings-view">
+                                <div class="permission-content">
+                                    <label for="settings-view">Visualizar configurações</label>
+                                    <div class="permission-description">Ver configurações do sistema</div>
+                                </div>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="settings-edit">
+                                <div class="permission-content">
+                                    <label for="settings-edit">Editar configurações</label>
+                                    <div class="permission-description">Modificar configurações do sistema</div>
+                                </div>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="users-manage">
+                                <div class="permission-content">
+                                    <label for="users-manage">Gerenciar usuários</label>
+                                    <div class="permission-description">Gerenciar usuários e permissões</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handler para "Selecionar todos"
+        document.querySelectorAll('.select-all').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const modulePermissions = e.target.closest('.module-permissions');
+                const checkboxes = modulePermissions.querySelectorAll('input[type="checkbox"]');
+                const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+                
+                checkboxes.forEach(cb => {
+                    cb.checked = !allChecked;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .settings-nav {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .settings-link {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            color: var(--color-gray-700);
+            text-decoration: none;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .settings-link:hover {
+            background: var(--color-gray-50);
+        }
+
+        .settings-link.active {
+            background: var(--color-gray-100);
+            color: var(--color-primary);
+        }
+
+        .settings-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-md);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-gray-300);
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--color-primary);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="mb-6">
+                <h1 class="text-xl font-bold m-0">Configurações</h1>
+                <p class="text-gray-500">Gerencie as configurações do sistema</p>
+            </div>
+
+            <div class="grid grid-4 gap-6">
+                <!-- Menu Lateral -->
+                <div class="settings-nav">
+                    <a href="#" class="settings-link active">
+                        <span class="settings-icon">🏢</span>
+                        <span>Empresa</span>
+                    </a>
+                    <a href="#" class="settings-link">
+                        <span class="settings-icon">👥</span>
+                        <span>Usuários</span>
+                    </a>
+                    <a href="#" class="settings-link">
+                        <span class="settings-icon">🔒</span>
+                        <span>Permissões</span>
+                    </a>
+                    <a href="#" class="settings-link">
+                        <span class="settings-icon">📋</span>
+                        <span>Personalização</span>
+                    </a>
+                    <a href="#" class="settings-link">
+                        <span class="settings-icon">📧</span>
+                        <span>Notificações</span>
+                    </a>
+                    <a href="#" class="settings-link">
+                        <span class="settings-icon">💾</span>
+                        <span>Backup</span>
+                    </a>
+                    <a href="#" class="settings-link">
+                        <span class="settings-icon">📱</span>
+                        <span>Integrações</span>
+                    </a>
+                    <a href="#" class="settings-link">
+                        <span class="settings-icon">📊</span>
+                        <span>Logs</span>
+                    </a>
+                </div>
+
+                <!-- Conteúdo -->
+                <div class="col-span-3">
+                    <!-- Configurações da Empresa -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Informações da Empresa</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Nome da Empresa</label>
+                                <input type="text" class="form-input" value="Transportadora Example">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">CNPJ</label>
+                                <input type="text" class="form-input" value="12.345.678/0001-90">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Endereço</label>
+                                <input type="text" class="form-input" value="Rua Example, 123">
+                            </div>
+                            <div class="grid grid-3 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">Cidade</label>
+                                    <input type="text" class="form-input" value="São Paulo">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Estado</label>
+                                    <select class="form-input">
+                                        <option>SP</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">CEP</label>
+                                    <input type="text" class="form-input" value="12345-678">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Configurações do Sistema -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Configurações do Sistema</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="grid grid-2 gap-4">
+                                <div>
+                                    <div class="flex justify-between items-center mb-4">
+                                        <div>
+                                            <div class="font-medium">Notificações por Email</div>
+                                            <div class="text-sm text-gray-500">Receber alertas e relatórios por email</div>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="flex justify-between items-center mb-4">
+                                        <div>
+                                            <div class="font-medium">Backup Automático</div>
+                                            <div class="text-sm text-gray-500">Realizar backup diário dos dados</div>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <div class="font-medium">Modo Escuro</div>
+                                            <div class="text-sm text-gray-500">Ativar tema escuro no sistema</div>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between items-center mb-4">
+                                        <div>
+                                            <div class="font-medium">Logs do Sistema</div>
+                                            <div class="text-sm text-gray-500">Registrar atividades do sistema</div>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="flex justify-between items-center mb-4">
+                                        <div>
+                                            <div class="font-medium">2FA</div>
+                                            <div class="text-sm text-gray-500">Autenticação em dois fatores</div>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <div class="font-medium">API Access</div>
+                                            <div class="text-sm text-gray-500">Permitir acesso via API</div>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ações -->
+                    <div class="flex justify-end gap-3">
+                        <button class="btn btn-outline">Cancelar</button>
+                        <button class="btn btn-primary">Salvar Alterações</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

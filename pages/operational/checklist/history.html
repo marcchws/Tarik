@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Checklists - Tarik</title>
+    <style>
+        .history-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filters-section {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .filter-input {
+            padding: 0.5rem;
+            border: 1px solid #e4e4e7;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .history-table th,
+        .history-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        .status-completed {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            background: white;
+            border: 1px solid #e4e4e7;
+        }
+    </style>
+</head>
+<body>
+    <div class="history-container">
+        <!-- Filtros -->
+        <div class="filters-section">
+            <div class="filters-grid">
+                <div>
+                    <input type="text" class="filter-input" placeholder="Buscar por OS...">
+                </div>
+                <div>
+                    <select class="filter-input">
+                        <option>Todos os veículos</option>
+                        <option>Ford Cargo 2429</option>
+                        <option>VW Constellation</option>
+                    </select>
+                </div>
+                <div>
+                    <select class="filter-input">
+                        <option>Todos os motoristas</option>
+                        <option>João Silva</option>
+                        <option>Maria Santos</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="date" class="filter-input">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela de Histórico -->
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>OS</th>
+                    <th>Data</th>
+                    <th>Veículo</th>
+                    <th>Motorista</th>
+                    <th>Template</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#OS001</td>
+                    <td>24/01/2025 09:30</td>
+                    <td>Ford Cargo 2429</td>
+                    <td>João Silva</td>
+                    <td>Checklist Veículos Pesados</td>
+                    <td><span class="status-badge status-completed">Concluído</span></td>
+                    <td>
+                        <button class="btn">👁️ Ver</button>
+                        <button class="btn">📄 PDF</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#OS002</td>
+                    <td>24/01/2025 10:15</td>
+                    <td>VW Constellation</td>
+                    <td>Maria Santos</td>
+                    <td>Inspeção Diária</td>
+                    <td><span class="status-badge status-pending">Em Andamento</span></td>
+                    <td>
+                        <button class="btn">👁️ Ver</button>
+                        <button class="btn">📄 PDF</button>
+                    </td>
+                </tr>
+                <!-- Mais linhas aqui -->
+            </tbody>
+        </table>
+
+        <!-- Paginação -->
+        <div style="display: flex; justify-content: flex-end; margin-top: 1rem; gap: 0.5rem;">
+            <button class="btn">Anterior</button>
+            <button class="btn" style="background: #2563eb; color: white;">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn">Próximo</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .role-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+        }
+
+        .role-admin {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .role-manager {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .role-user {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: var(--spacing-xs);
+        }
+
+        .status-active {
+            background: var(--color-success);
+        }
+
+        .status-inactive {
+            background: var(--color-gray-400);
+        }
+
+        .filter-section {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .activity-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: var(--spacing-xs);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Usuários</h1>
+                    <p class="text-gray-500">Gerencie os usuários do sistema</p>
+                </div>
+                <button class="btn btn-primary">Novo Usuário</button>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filter-section">
+                <div class="grid grid-4 gap-4">
+                    <div class="form-group mb-0">
+                        <input type="text" class="form-input" placeholder="Buscar por nome ou email...">
+                    </div>
+                    <div class="form-group mb-0">
+                        <select class="form-input">
+                            <option>Todos os perfis</option>
+                            <option>Administrador</option>
+                            <option>Gerente</option>
+                            <option>Usuário</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-0">
+                        <select class="form-input">
+                            <option>Todos os status</option>
+                            <option>Ativo</option>
+                            <option>Inativo</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-0">
+                        <select class="form-input">
+                            <option>Ordenar por</option>
+                            <option>Nome</option>
+                            <option>Data de cadastro</option>
+                            <option>Último acesso</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de Usuários -->
+            <div class="card">
+                <div class="card-body p-0">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Usuário</th>
+                                <th>Email</th>
+                                <th>Perfil</th>
+                                <th>Status</th>
+                                <th>Último Acesso</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="flex items-center">
+                                        <div class="user-avatar mr-3">JS</div>
+                                        <div>
+                                            <div class="font-medium">João Silva</div>
+                                            <div class="text-sm text-gray-500">Cadastrado em 15/01/2025</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>joao.silva@email.com</td>
+                                <td><span class="role-badge role-admin">Administrador</span></td>
+                                <td>
+                                    <div class="flex items-center">
+                                        <span class="status-indicator status-active"></span>
+                                        Ativo
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>Hoje, 10:30</div>
+                                    <div class="text-sm text-gray-500">via Web</div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm">Editar</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="flex items-center">
+                                        <div class="user-avatar mr-3">MS</div>
+                                        <div>
+                                            <div class="font-medium">Maria Santos</div>
+                                            <div class="text-sm text-gray-500">Cadastrada em 20/01/2025</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>maria.santos@email.com</td>
+                                <td><span class="role-badge role-manager">Gerente</span></td>
+                                <td>
+                                    <div class="flex items-center">
+                                        <span class="status-indicator status-active"></span>
+                                        Ativo
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>Ontem, 15:45</div>
+                                    <div class="text-sm text-gray-500">via Mobile</div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm">Editar</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="flex items-center">
+                                        <div class="user-avatar mr-3">PO</div>
+                                        <div>
+                                            <div class="font-medium">Pedro Oliveira</div>
+                                            <div class="text-sm text-gray-500">Cadastrado em 10/01/2025</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>pedro.oliveira@email.com</td>
+                                <td><span class="role-badge role-user">Usuário</span></td>
+                                <td>
+                                    <div class="flex items-center">
+                                        <span class="status-indicator status-inactive"></span>
+                                        Inativo
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>22/01/2025</div>
+                                    <div class="text-sm text-gray-500">via Web</div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm">Editar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Paginação -->
+            <div class="flex justify-between items-center mt-4">
+                <div class="text-sm text-gray-500">
+                    Mostrando 1-3 de 25 usuários
+                </div>
+                <div class="flex gap-2">
+                    <button class="btn btn-outline">Anterior</button>
+                    <button class="btn btn-primary">1</button>
+                    <button class="btn btn-outline">2</button>
+                    <button class="btn btn-outline">3</button>
+                    <button class="btn btn-outline">Próximo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

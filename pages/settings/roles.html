@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papéis e Permissões - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .role-card {
+            transition: transform 0.2s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .role-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .user-count {
+            background: var(--color-gray-100);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+        }
+
+        .permission-matrix {
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .matrix-header {
+            background: var(--color-gray-50);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-bottom: 1px solid var(--color-gray-200);
+            font-weight: 500;
+        }
+
+        .matrix-row {
+            display: grid;
+            grid-template-columns: 200px repeat(4, 1fr);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .matrix-row:last-child {
+            border-bottom: none;
+        }
+
+        .matrix-cell {
+            padding: var(--spacing-sm) var(--spacing-md);
+            display: flex;
+            align-items: center;
+        }
+
+        .matrix-cell:not(:last-child) {
+            border-right: 1px solid var(--color-gray-200);
+        }
+
+        .permission-group {
+            background: var(--color-gray-50);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Papéis e Permissões</h1>
+                    <p class="text-gray-500">Gerencie os papéis e permissões do sistema</p>
+                </div>
+                <button class="btn btn-primary">Novo Papel</button>
+            </div>
+
+            <!-- Papéis -->
+            <div class="grid grid-4 gap-4 mb-6">
+                <!-- Administrador -->
+                <div class="card role-card">
+                    <div class="card-body">
+                        <div class="role-icon">👑</div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-bold mb-1">Administrador</h3>
+                                <div class="text-sm text-gray-500">Acesso total ao sistema</div>
+                            </div>
+                            <span class="user-count">5 usuários</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="btn btn-outline btn-sm">Editar</button>
+                            <button class="btn btn-outline btn-sm" disabled>Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente -->
+                <div class="card role-card">
+                    <div class="card-body">
+                        <div class="role-icon">🔑</div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-bold mb-1">Gerente</h3>
+                                <div class="text-sm text-gray-500">Gerenciamento operacional</div>
+                            </div>
+                            <span class="user-count">8 usuários</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="btn btn-outline btn-sm">Editar</button>
+                            <button class="btn btn-outline btn-sm">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operador -->
+                <div class="card role-card">
+                    <div class="card-body">
+                        <div class="role-icon">👤</div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-bold mb-1">Operador</h3>
+                                <div class="text-sm text-gray-500">Operações básicas</div>
+                            </div>
+                            <span class="user-count">12 usuários</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="btn btn-outline btn-sm">Editar</button>
+                            <button class="btn btn-outline btn-sm">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visualizador -->
+                <div class="card role-card">
+                    <div class="card-body">
+                        <div class="role-icon">👀</div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-bold mb-1">Visualizador</h3>
+                                <div class="text-sm text-gray-500">Apenas visualização</div>
+                            </div>
+                            <span class="user-count">3 usuários</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="btn btn-outline btn-sm">Editar</button>
+                            <button class="btn btn-outline btn-sm">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matriz de Permissões -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-lg font-bold m-0">Matriz de Permissões</h3>
+                </div>
+                <div class="card-body p-0">
+                    <div class="permission-matrix">
+                        <div class="matrix-row">
+                            <div class="matrix-cell">Recursos</div>
+                            <div class="matrix-cell">Administrador</div>
+                            <div class="matrix-cell">Gerente</div>
+                            <div class="matrix-cell">Operador</div>
+                            <div class="matrix-cell">Visualizador</div>
+                        </div>
+
+                        <!-- Frota -->
+                        <div class="matrix-row permission-group">
+                            <div class="matrix-cell">Frota</div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">Visualizar veículos</div>
+                            <div class="matrix-cell"><input type="checkbox" checked disabled></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">Editar veículos</div>
+                            <div class="matrix-cell"><input type="checkbox" checked disabled></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                        </div>
+
+                        <!-- Ordens de Serviço -->
+                        <div class="matrix-row permission-group">
+                            <div class="matrix-cell">Ordens de Serviço</div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">Visualizar OS</div>
+                            <div class="matrix-cell"><input type="checkbox" checked disabled></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">Criar/Editar OS</div>
+                            <div class="matrix-cell"><input type="checkbox" checked disabled></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                        </div>
+
+                        <!-- Relatórios -->
+                        <div class="matrix-row permission-group">
+                            <div class="matrix-cell">Relatórios</div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">Visualizar relatórios</div>
+                            <div class="matrix-cell"><input type="checkbox" checked disabled></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">Criar relatórios</div>
+                            <div class="matrix-cell"><input type="checkbox" checked disabled></div>
+                            <div class="matrix-cell"><input type="checkbox" checked></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                        </div>
+
+                        <!-- Configurações -->
+                        <div class="matrix-row permission-group">
+                            <div class="matrix-cell">Configurações</div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                            <div class="matrix-cell"></div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">Gerenciar usuários</div>
+                            <div class="matrix-cell"><input type="checkbox" checked disabled></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">Configurações do sistema</div>
+                            <div class="matrix-cell"><input type="checkbox" checked disabled></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                            <div class="matrix-cell"><input type="checkbox"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

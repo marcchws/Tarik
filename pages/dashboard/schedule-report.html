@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Relatório - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .preview-section {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+        }
+
+        .schedule-option {
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .schedule-option:hover {
+            border-color: var(--color-primary);
+            background: var(--color-gray-50);
+        }
+
+        .schedule-option.selected {
+            border-color: var(--color-primary);
+            background: var(--color-gray-50);
+        }
+
+        .recipient-tag {
+            display: inline-flex;
+            align-items: center;
+            background: var(--color-gray-100);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-full);
+            margin: 0 var(--spacing-xs) var(--spacing-xs) 0;
+        }
+
+        .recipient-tag button {
+            border: none;
+            background: none;
+            margin-left: var(--spacing-xs);
+            cursor: pointer;
+            color: var(--color-gray-500);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Agendar Relatório</h1>
+                    <p class="text-gray-500">Configure a geração automática de relatórios</p>
+                </div>
+                <div>
+                    <button class="btn btn-outline mr-2">Cancelar</button>
+                    <button class="btn btn-primary">Salvar Agendamento</button>
+                </div>
+            </div>
+
+            <div class="grid grid-2 gap-6">
+                <!-- Formulário -->
+                <div>
+                    <!-- Informações Básicas -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Informações Básicas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Nome do Agendamento</label>
+                                <input type="text" class="form-input" placeholder="Ex: Relatório Mensal de Frota">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tipo de Relatório</label>
+                                <select class="form-input">
+                                    <option>Relatório de Frota</option>
+                                    <option>Relatório de Motoristas</option>
+                                    <option>Relatório Financeiro</option>
+                                    <option>Relatório de Manutenções</option>
+                                    <option>Relatório de Rotas</option>
+                                    <option>Relatório de Combustível</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-0">
+                                <label class="form-label">Descrição</label>
+                                <textarea class="form-input" rows="3" placeholder="Descreva o propósito deste agendamento..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Configuração de Agendamento -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Configuração de Agendamento</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="schedule-option selected">
+                                <div class="flex items-center">
+                                    <input type="radio" name="schedule-type" checked>
+                                    <div class="ml-3">
+                                        <div class="font-medium">Diário</div>
+                                        <div class="text-sm text-gray-500">O relatório será gerado todos os dias</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="schedule-option">
+                                <div class="flex items-center">
+                                    <input type="radio" name="schedule-type">
+                                    <div class="ml-3">
+                                        <div class="font-medium">Semanal</div>
+                                        <div class="text-sm text-gray-500">O relatório será gerado uma vez por semana</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="schedule-option">
+                                <div class="flex items-center">
+                                    <input type="radio" name="schedule-type">
+                                    <div class="ml-3">
+                                        <div class="font-medium">Mensal</div>
+                                        <div class="text-sm text-gray-500">O relatório será gerado uma vez por mês</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-4">
+                                <label class="form-label">Horário de Geração</label>
+                                <input type="time" class="form-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destinatários -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Destinatários</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Adicionar Destinatário</label>
+                                <div class="flex gap-2">
+                                    <input type="email" class="form-input" placeholder="Digite o email...">
+                                    <button class="btn btn-outline">Adicionar</button>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="recipient-tag">
+                                    joao.silva@email.com
+                                    <button>×</button>
+                                </div>
+                                <div class="recipient-tag">
+                                    maria.santos@email.com
+                                    <button>×</button>
+                                </div>
+                                <div class="recipient-tag">
+                                    pedro.oliveira@email.com
+                                    <button>×</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview -->
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-lg font-bold m-0">Preview do Agendamento</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="preview-section mb-4">
+                                <h4 class="font-medium mb-2">Configurações</h4>
+                                <div class="text-sm">
+                                    <div class="mb-2">
+                                        <span class="text-gray-500">Nome:</span> Relatório Mensal de Frota
+                                    </div>
+                                    <div class="mb-2">
+                                        <span class="text-gray-500">Tipo:</span> Relatório de Frota
+                                    </div>
+                                    <div class="mb-2">
+                                        <span class="text-gray-500">Frequência:</span> Diário às 08:00
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-500">Próxima geração:</span> 25/01/2025 08:00
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="preview-section">
+                                <h4 class="font-medium mb-2">Destinatários</h4>
+                                <div class="text-sm">
+                                    <div class="mb-1">joao.silva@email.com</div>
+                                    <div class="mb-1">maria.santos@email.com</div>
+                                    <div>pedro.oliveira@email.com</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span class="text-sm">Salvar como favorito</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

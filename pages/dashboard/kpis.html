@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPIs - Tarik</title>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
+    <style>
+        .kpi-card {
+            height: 100%;
+        }
+
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin: var(--spacing-sm) 0;
+        }
+
+        .kpi-chart {
+            height: 100px;
+            margin: var(--spacing-md) 0;
+            background: var(--color-gray-50);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray-400);
+        }
+
+        .kpi-target {
+            padding: var(--spacing-sm);
+            background: var(--color-gray-50);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .progress-value {
+            height: 100%;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+
+        .filter-section {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-xl font-bold m-0">Indicadores de Performance (KPIs)</h1>
+                    <p class="text-gray-500">Monitoramento de métricas chave</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="btn btn-outline">Exportar Excel</button>
+                    <button class="btn btn-primary">Gerar Relatório</button>
+                </div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filter-section">
+                <div class="grid grid-4 gap-4">
+                    <div>
+                        <label class="form-label">Período</label>
+                        <select class="form-input">
+                            <option>Este mês</option>
+                            <option>Último trimestre</option>
+                            <option>Este ano</option>
+                            <option>Personalizado</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">Tipo de Veículo</label>
+                        <select class="form-input">
+                            <option>Todos</option>
+                            <option>Caminhões</option>
+                            <option>Vans</option>
+                            <option>Utilitários</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">Região</label>
+                        <select class="form-input">
+                            <option>Todas</option>
+                            <option>Sul</option>
+                            <option>Sudeste</option>
+                            <option>Centro-Oeste</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">Status</label>
+                        <select class="form-input">
+                            <option>Todos</option>
+                            <option>Ativos</option>
+                            <option>Em Manutenção</option>
+                            <option>Inativos</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPIs Financeiros -->
+            <h2 class="text-lg font-bold mb-4">Indicadores Financeiros</h2>
+            <div class="grid grid-3 gap-4 mb-6">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="text-gray-500">Custo por Quilômetro</div>
+                        <div class="kpi-value">R$ 2,45</div>
+                        <div class="text-sm text-success">↓ 8% vs. mês anterior</div>
+                        <div class="kpi-chart">Gráfico de Tendência</div>
+                        <div class="kpi-target">
+                            <div class="flex justify-between mb-2">
+                                <span>Meta: R$ 2,30</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="text-gray-500">Custo de Manutenção</div>
+                        <div class="kpi-value">R$ 45K</div>
+                        <div class="text-sm text-error">↑ 12% vs. mês anterior</div>
+                        <div class="kpi-chart">Gráfico de Tendência</div>
+                        <div class="kpi-target">
+                            <div class="flex justify-between mb-2">
+                                <span>Meta: R$ 40K</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="text-gray-500">ROI da Frota</div>
+                        <div class="kpi-value">125%</div>
+                        <div class="text-sm text-success">↑ 5% vs. mês anterior</div>
+                        <div class="kpi-chart">Gráfico de Tendência</div>
+                        <div class="kpi-target">
+                            <div class="flex justify-between mb-2">
+                                <span>Meta: 130%</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPIs Operacionais -->
+            <h2 class="text-lg font-bold mb-4">Indicadores Operacionais</h2>
+            <div class="grid grid-3 gap-4 mb-6">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="text-gray-500">Taxa de Utilização</div>
+                        <div class="kpi-value">85%</div>
+                        <div class="text-sm text-success">↑ 3% vs. mês anterior</div>
+                        <div class="kpi-chart">Gráfico de Tendência</div>
+                        <div class="kpi-target">
+                            <div class="flex justify-between mb-2">
+                                <span>Meta: 90%</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="text-gray-500">Tempo Médio em Rota</div>
+                        <div class="kpi-value">4.2h</div>
+                        <div class="text-sm text-success">↓ 15min vs. mês anterior</div>
+                        <div class="kpi-chart">Gráfico de Tendência</div>
+                        <div class="kpi-target">
+                            <div class="flex justify-between mb-2">
+                                <span>Meta: 4h</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="text-gray-500">Disponibilidade</div>
+                        <div class="kpi-value">92%</div>
+                        <div class="text-sm text-error">↓ 2% vs. mês anterior</div>
+                        <div class="kpi-chart">Gráfico de Tendência</div>
+                        <div class="kpi-target">
+                            <div class="flex justify-between mb-2">
+                                <span>Meta: 95%</span>
+                                <span>96%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 96%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPIs de Manutenção -->
+            <h2 class="text-lg font-bold mb-4">Indicadores de Manutenção</h2>
+            <div class="grid grid-3 gap-4">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="text-gray-500">MTBF</div>
+                        <div class="kpi-value">45d</div>
+                        <div class="text-sm text-success">↑ 5d vs. mês anterior</div>
+                        <div class="kpi-chart">Gráfico de Tendência</div>
+                        <div class="kpi-target">
+                            <div class="flex justify-between mb-2">
+                                <span>Meta: 50d</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="text-gray-500">MTTR</div>
+                        <div class="kpi-value">4.5h</div>
+                        <div class="text-sm text-error">↑ 0.5h vs. mês anterior</div>
+                        <div class="kpi-chart">Gráfico de Tendência</div>
+                        <div class="kpi-target">
+                            <div class="flex justify-between mb-2">
+                                <span>Meta: 4h</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="text-gray-500">Preventivas no Prazo</div>
+                        <div class="kpi-value">88%</div>
+                        <div class="text-sm text-success">↑ 3% vs. mês anterior</div>
+                        <div class="kpi-chart">Gráfico de Tendência</div>
+                        <div class="kpi-target">
+                            <div class="flex justify-between mb-2">
+                                <span>Meta: 90%</span>
+                                <span>97%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 97%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
